@@ -1,0 +1,78 @@
+{
+  "n_impacts": 600,
+  "shots": 1024,
+  "eligible": 240,
+  "protected_counts": [
+    117,
+    123,
+    132,
+    150,
+    168,
+    204
+  ],
+  "minimum_feasible_typed_count": 117,
+  "reference_count": 168,
+  "decoders": {
+    "D0C": {
+      "target": 0.00075787353515625,
+      "target_ci": [
+        0.0005004770463225156,
+        0.001055428748164913
+      ],
+      "typed_excess": [
+        0.00082867431640625,
+        0.0006190388997395833,
+        0.0005099894205729166,
+        0.0003070271809895834,
+        0.00024241129557291667,
+        0.00011106363932291666
+      ],
+      "typed_excess_ci": [
+        [
+          0.0006911155098656181,
+          0.0011637605313566312
+        ],
+        [
+          0.0005217285270960586,
+          0.000714719786383825
+        ],
+        [
+          0.0004222729636599046,
+          0.0005981168943609365
+        ],
+        [
+          0.00023935940824332746,
+          0.0003706279620995359
+        ],
+        [
+          0.0001740874390168796,
+          0.0003081307384772445
+        ],
+        [
+          5.44863892503411e-05,
+          0.0001635741395225215
+        ]
+      ],
+      "n_star": 118.83729599718542,
+      "point_status": "bracketed",
+      "crossing_bracket": [
+        117,
+        123
+      ],
+      "n_star_ci": [
+        117.0,
+        133.08755058805605
+      ],
+      "saving": 49.16270400281458,
+      "saving_ci": [
+        34.91244941194395,
+        51.0
+      ],
+      "bootstrap_lower_edge_fraction": 0.281,
+      "bootstrap_upper_edge_fraction": 0.0,
+      "point_nonmonotone_segments": 0
+    }
+  },
+  "protocol_sha256": "5d5aa684deadc9b3deb2ff2caed457c66c1648839a613a475b4ef32d755c575a",
+  "scope": "New trajectories on the archived600-impact bank, nominal paired stratified bootstrap with quiet uncertainty; no new independent impact cohort"
+}

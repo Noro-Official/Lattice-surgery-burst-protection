@@ -1,0 +1,6 @@
+{
+  "completed_checkpoint_files": 350,
+  "workers_before": 6,
+  "workers_after": 10,
+  "reason": "Increase concurrency for the unchanged model, counts, seeds and sample sizes; no numerical outcomes inspected for this scheduling decision."
+}

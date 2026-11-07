@@ -1,0 +1,11 @@
+matplotlib>=3.8
+numpy
+SciencePlots
+cmcrameri
+matplotlib-label-lines
+highlight-text
+colorspacious
+stim
+scour
+pikepdf
+pymupdf

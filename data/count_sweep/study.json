@@ -1,0 +1,62 @@
+{
+ "name": "count_extension_20261106",
+ "d": 9,
+ "pool_seed": 78001,
+ "n_pool": 20000,
+ "alloc": [
+  300,
+  180,
+  120
+ ],
+ "decoders": [
+  "D0C"
+ ],
+ "shots": 1024,
+ "seed": 78002,
+ "block_events": 4,
+ "conditions": [
+  {
+   "name": "n117|typed",
+   "mask_name": "n117|typed",
+   "tm": 9,
+   "mask_hash": "b0a8383618a5ac10"
+  },
+  {
+   "name": "n123|typed",
+   "mask_name": "n123|typed",
+   "tm": 9,
+   "mask_hash": "f326e5ee5fdb1901"
+  },
+  {
+   "name": "n132|typed",
+   "mask_name": "n132|typed",
+   "tm": 9,
+   "mask_hash": "5bd93c534325bfa1"
+  },
+  {
+   "name": "n150|typed",
+   "mask_name": "n150|typed",
+   "tm": 9,
+   "mask_hash": "8746035388f3f303"
+  },
+  {
+   "name": "n168|typed",
+   "mask_name": "n168|typed",
+   "tm": 9,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "n204|typed",
+   "mask_name": "n204|typed",
+   "tm": 9,
+   "mask_hash": "b622eee9e746da18"
+  },
+  {
+   "name": "n168|shallow",
+   "mask_name": "n168|shallow",
+   "tm": 9,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  }
+ ],
+ "events_file": "events_d9_seed78001_n20000_300-180-120_fp1.npz"
+}

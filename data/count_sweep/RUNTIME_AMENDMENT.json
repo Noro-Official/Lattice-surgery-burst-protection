@@ -1,0 +1,10 @@
+{
+  "reason": "Profiling found event-informed correlated matcher construction dominates runtime. Concentrate requested hardware-resource refinement on the correlated background decoder, which is the new headline and the declared primary endpoint. No extension risk estimates or crossings have been inspected. All count points and the shallow control remain regenerated; model, bank, seeds and shots unchanged.",
+  "completed_blocks_before_amendment": 9,
+  "decision_basis": "Runtime profile of a separate four-event control, not comparative extension outcomes",
+  "decoders_after_amendment": [
+    "D0C"
+  ],
+  "grid_unchanged": true,
+  "partial_other_decoder_records": "Retained if already written, excluded from the refined result."
+}

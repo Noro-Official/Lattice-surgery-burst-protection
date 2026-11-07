@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use these data or code, please cite the paper below."
+title: "Circuit-aware protection against burst errors in lattice surgery: reproducibility package"
+authors:
+  - family-names: Kim
+    given-names: Eric
+repository-code: "https://github.com/Noro-Official/lattice-surgery-burst-protection"
+license: MIT
+keywords:
+  - quantum error correction
+  - lattice surgery
+  - burst errors
+  - surface code
+preferred-citation:
+  type: article
+  title: "Circuit-aware protection against burst errors in lattice surgery"
+  authors:
+    - family-names: Kim
+      given-names: Eric
+  year: 2026

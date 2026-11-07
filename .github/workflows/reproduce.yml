@@ -1,0 +1,46 @@
+name: reproduce
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Recompute results and compare with the paper
+        run: python reproduce.py
+      - name: Job summary
+        if: always()
+        run: test -f results/summary.md && cat results/summary.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reproduced-results
+          path: results/
+
+  figures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r figures/requirements.txt
+      - name: Draw Figs. 2-5
+        working-directory: figures
+        run: |
+          python make_manuscript_figures.py ../data/count_sweep/RESULTS.json
+          python figs_v11.py ../data/count_sweep/RESULTS.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: figures/out/

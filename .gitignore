@@ -1,0 +1,5 @@
+results/
+figures/out/
+figures/fonts/
+__pycache__/
+*.pyc

@@ -1,0 +1,9 @@
+{
+  "bootstrap_replicates": 4000,
+  "seed": 20261106,
+  "quiet_file": "quiet_d9.json",
+  "quiet_sha256": "44f3282299c1ecd9648a49983db7ebfc2a8fb4adbb614e279aa296454ac697da",
+  "quiet_uncertainty": "Jeffreys beta draws shared across layouts and shared D0/F or D0C/FC pairs; independent of event and source-weight resampling",
+  "crossing": "First piecewise log-risk crossing, floor1e-7, no forced monotonicity, no extrapolation. All lower/upper-edge frequencies reported. Minimum feasible declared-rule count117. Infeasible96/114 are not simulated.",
+  "posthoc_scope": "Original600-impact bank; regenerated all typed points and shallow reference under current runtime; does not add independent impact confirmation"
+}

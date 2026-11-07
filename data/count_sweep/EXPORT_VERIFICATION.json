@@ -1,0 +1,9 @@
+{
+  "blocks": 2100,
+  "unique_event_mode_layout_records": 8400,
+  "trajectories": 8601600,
+  "all_histograms_sum_to_shots": true,
+  "weighted_point_estimates_verified_from_counts": true,
+  "interpolation_verified_from_points": true,
+  "full_bootstrap_recomputation": "Run recompute_results.py; independently checked during export"
+}
