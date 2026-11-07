@@ -11,7 +11,7 @@ python reproduce.py          # about 10 s; writes results/summary.md
 
 `reproduce.py` does four things:
 1. Checks the SHA-256 of every data file.
-2. Recomputes three studies from per-event counts, with the original estimators and bootstrap seeds, and requires an
+2. Recomputes six studies from per-event counts, with the original estimators and bootstrap seeds, and requires an
    exact match with the stored analyses.
 3. Reads the stored analyses for the distance-9 mechanism studies.
 4. Prints a paper-versus-data table.
@@ -31,16 +31,15 @@ It exits with an error only if a checksum or a recomputation fails. The GitHub A
 | Report × ancilla-Pauli interaction (Fig. 4b) | 1.12 (0.71–1.60) × 10⁻⁴ | same | stored analysis |
 | Path ranking of local swaps, Spearman ρ (SM S4) | 0.77 | 0.77 | stored analysis |
 | Path cost W at depth one (Fig. 3c) | 7.8 / 10.4 / 22.7 | same | stored isolated-site scores |
-| Deep/typed ratio η at d = 9, 3,200 impacts (Fig. 2a) | 1.62 (1.49–1.77) | same | original archived analysis |
-| Typed reduction, 1 − 1/η (abstract) | 38% (33–44%) | same | original archived analysis |
-| η for the other decoders (Fig. 2a) | 1.43, 1.36, 1.28 | same | original archived analysis |
-| d = 13 oracle ratios, 1,200 impacts (Fig. 5a) | 0.96 (0.62–1.56), 1.12 (0.48–2.65) | same | original archived analysis |
-| Five-round burst cap, shallow/typed (Fig. 5b) | 0.60 (0.28–0.97) | same | original archived analysis |
+| Deep/typed ratio η at d = 9, 3,200 impacts (Fig. 2a) | 1.62 (1.49–1.77) | same | per-event counts |
+| Typed reduction, 1 − 1/η (abstract) | 38% (33–44%) | same | per-event counts |
+| η for the other decoders (Fig. 2a) | 1.43, 1.36, 1.28 | same | per-event counts |
+| d = 13 oracle ratios, 1,200 impacts (Fig. 5a) | 0.96 (0.62–1.56), 1.12 (0.48–2.65) | same | per-event counts |
+| Five-round burst cap, shallow/typed (Fig. 5b) | 0.60 (0.28–0.97) | same | per-event counts |
 
-"Original archived analysis" means the analysis file from the 31 October 2026 publication package the figures were
-built from, checked byte for byte against that package's own checksums (`data/p1_archive/`). Those cohorts' 15,600
-per-event block files are listed in `data/p1_archive/PACKAGE_SHA256SUMS.txt` but not yet included. Until they are,
-these rows confirm the archived analysis rather than recompute it.
+Figs. 2a, 5a and 5b,c come from the original cohorts in the 31 October 2026 publication package (`data/p1_archive/`).
+Their 15,600 per-event block files are each checked against that package's own checksums before they are
+recomputed. All 160 archived comparisons are reproduced exactly.
 
 ### Notes
 
@@ -57,6 +56,7 @@ requirements.txt                   versions this package was verified with
 analysis/
   r9_estimated_burst_decoder.py    R9 analysis (standalone copy of the original)
   r1_d13_response_models.py        R1 analysis (standalone copy of the original)
+  p1_archive_cohorts.py            Fig. 2a, 5a, 5b,c cohorts (standalone re-implementation of the original estimator)
 data/
   count_sweep/                     refined protection-count sweep, d = 9 (Table I, Fig. 2b)
     recompute_results.py           standalone recomputation, NumPy only
@@ -67,8 +67,8 @@ data/
   r1_d13_response_models/          R1: 2,000 impacts at d = 13, three response models
   d9_mechanism_inputs/             stored analyses: factorial, local-swap exchange test, isolated-site path costs,
                                    initial count sweep (baselines/frontier.json), composition
-  p1_archive/                      original Fig. 2a, Fig. 5a and Fig. 5b,c cohorts: analyses, event banks, quiet
-                                   baselines, and the package's checksums
+  p1_archive/                      original Fig. 2a, Fig. 5a and Fig. 5b,c cohorts: per-event blocks, event banks,
+                                   quiet baselines, archived analyses and the package's checksums
 figures/                           scripts that draw Figs. 2–5 from figure_data.json and the count-sweep results
 SHA256SUMS.txt                     checksums of every file under data/
 ```

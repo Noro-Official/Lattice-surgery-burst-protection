@@ -170,13 +170,33 @@ def archive_p1():
         h, f = line.split(maxsplit=1)
         sums[f] = h
     bad = [str(p.relative_to(d)) for p in d.rglob("*") if p.is_file() and p.name != "PACKAGE_SHA256SUMS.txt"
-           and p.suffix != ".md"
+           and p.suffix != ".md" and p.name != "blocks.jsonl.gz"     # blocks are checked line by line below
            and sums.get("experiments/pacer_p1/results/" + str(p.relative_to(d))) != hashlib.sha256(p.read_bytes()).hexdigest()]
     if bad:
         problems.append("files differ from the original package checksums: " + ", ".join(bad))
-    level = "original archived analysis (checksum-verified)"
+
+    # Recompute from the 15,600 per-event blocks (each checked against the package checksum) and require an exact
+    # match with the archived analyses.
+    new = RESULTS / "p1_archive_RESULTS.json"
+    run(ROOT / "analysis" / "p1_archive_cohorts.py", new)
+    if not new.exists():
+        return
+    R = load(new)
+    stored = load(d / "precision_analysis.json")
+    keys = ("diff", "diff_ci", "ratio", "ratio_ci", "class")
+    diffs = [f"{s}/{c}: {x}" for s in ("precision_d9", "precision_d13") for c, v in R[s]["comparisons"].items()
+             for x in same({k: stored[s]["comparisons"][c][k] for k in keys}, v)]
+    stored_rg = load(d / "regime" / "analysis.json")["contrast"]
+    diffs += [f"regime/{c}: {x}" for c, v in R["regime"]["contrast"].items() for x in same(stored_rg[c], v)]
+    if diffs:
+        problems.append("P1 recomputation differs from the archived analyses: " + "; ".join(diffs[:5]))
+    n_cmp = sum(len(R[s]["comparisons"]) for s in ("precision_d9", "precision_d13")) + len(R["regime"]["contrast"])
+    print(f"[2/4] P1 cohorts recomputed from {sum(R[s]['blocks'] for s in R):,} blocks: "
+          f"{'all' if not diffs else 'NOT all'} {n_cmp} archived comparisons reproduced")
+
+    level = "recomputed from per-event counts"
     fmt = lambda v: f"{v['ratio']:.2f} ({v['ratio_ci'][0]:.2f}–{v['ratio_ci'][1]:.2f})"
-    c9 = load(d / "precision_d9" / "analysis.json")["comparisons"]
+    c9 = R["precision_d9"]["comparisons"]
     got = fmt(c9["deep vs typed|D0C"])
     record("Deep/typed ratio η at d = 9, correlated background matching (Fig. 2a)", "1.62 (1.49–1.77)", got, level,
            got == "1.62 (1.49–1.77)")
@@ -186,15 +206,14 @@ def archive_p1():
     record("Typed reduction in excess risk, 1 − 1/η (abstract)", "38% (33–44%)", got, level, got == "38% (33–44%)")
     got = ", ".join(f"{c9[f'deep vs typed|{k}']['ratio']:.2f}" for k in ("FC", "D0", "F"))
     record("η for the other three decoders (Fig. 2a)", "1.43, 1.36, 1.28", got, level, got == "1.43, 1.36, 1.28")
-    c13 = load(d / "precision_analysis.json")["precision_d13"]["comparisons"]
+    c13 = R["precision_d13"]["comparisons"]
     got = f"{fmt(c13['deep vs typed|F'])}, {fmt(c13['deep vs typed|FC'])}"
     record("d = 13 oracle ratios, 1,200 impacts (Fig. 5a)", "0.96 (0.62–1.56), 1.12 (0.48–2.65)", got, level,
            got == "0.96 (0.62–1.56), 1.12 (0.48–2.65)")
-    rg = load(d / "regime" / "analysis.json")["contrast"]
+    rg = R["regime"]["contrast"]
     got = fmt(rg["dur5|shallow - dur5|typed_paper|D0"])
     record("Five-round burst cap, shallow/typed ratio, background matching (Fig. 5b)", "0.60 (0.28–0.97)", got, level,
            got == "0.60 (0.28–0.97)")
-    print("[3/4] archived P1 analyses verified against the package checksums")
 
 
 NOT_HERE = []
