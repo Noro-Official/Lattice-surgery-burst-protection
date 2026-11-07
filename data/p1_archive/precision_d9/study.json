@@ -1,0 +1,45 @@
+{
+ "name": "precision_d9",
+ "d": 9,
+ "pool_seed": 85001,
+ "n_pool": 60000,
+ "alloc": [
+  352,
+  897,
+  289,
+  713,
+  949
+ ],
+ "seed": 85002,
+ "block_events": 4,
+ "decoders": [
+  "D0",
+  "D0C",
+  "F",
+  "FC"
+ ],
+ "shots": 4096,
+ "score_typed": "typed_paper",
+ "quiet_tag": "p2",
+ "conditions": [
+  {
+   "name": "shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "mask_hash": "feb78d5b7189d641"
+  }
+ ],
+ "events_file": "events_d9_seed85001_n60000_scored_352-897-289-713-949.npz"
+}

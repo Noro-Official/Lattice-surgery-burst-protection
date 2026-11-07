@@ -6,6 +6,7 @@
 | [`r9_estimated_burst_decoder/`](r9_estimated_burst_decoder/README.md) | Estimated-burst decoder break-even (≈ 4.3%) | per-event counts |
 | [`r1_d13_response_models/`](r1_d13_response_models/README.md) | SM S5: three response models at d = 13 | per-event counts |
 | [`d9_mechanism_inputs/`](d9_mechanism_inputs/README.md) | Fig. 3 path costs, Fig. 4 factorial, SM S4 local swaps, SM S1 initial count sweep | stored analyses |
+| [`p1_archive/`](p1_archive/README.md) | Fig. 2a (η = 1.62), Fig. 5a (d = 13), Fig. 5b,c (burst caps) | original archived analyses, checksum-verified |
 
 In `d9_mechanism_inputs/`:
 - `factorial/analysis.json` holds the Fig. 4 channel factorial. The paper's interaction is `effects["shallow - typed_paper|D0"].RA`.

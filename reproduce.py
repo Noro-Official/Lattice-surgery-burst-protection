@@ -162,11 +162,42 @@ def stored_d9():
     print("[3/4] distance-9 mechanism outputs read")
 
 
-NOT_HERE = [
-    ("Deep/typed ratio η at d = 9, four decoders (Fig. 2a, abstract)", "1.62 (1.49–1.77); 1.43, 1.36, 1.28"),
-    ("d = 13 oracle ratios (Fig. 5a)", "0.96 (0.62–1.56), 1.12 (0.48–2.65)"),
-    ("Burst-duration caps, five-round shallow/typed ratio (Fig. 5b,c)", "0.60 (0.28–0.97)"),
-]
+def archive_p1():
+    """Stored analyses from the 31 Oct 2026 publication package, verified against that package's own SHA256SUMS."""
+    d = DATA / "p1_archive"
+    sums = {}
+    for line in (d / "PACKAGE_SHA256SUMS.txt").read_text().splitlines():
+        h, f = line.split(maxsplit=1)
+        sums[f] = h
+    bad = [str(p.relative_to(d)) for p in d.rglob("*") if p.is_file() and p.name != "PACKAGE_SHA256SUMS.txt"
+           and p.suffix != ".md"
+           and sums.get("experiments/pacer_p1/results/" + str(p.relative_to(d))) != hashlib.sha256(p.read_bytes()).hexdigest()]
+    if bad:
+        problems.append("files differ from the original package checksums: " + ", ".join(bad))
+    level = "original archived analysis (checksum-verified)"
+    fmt = lambda v: f"{v['ratio']:.2f} ({v['ratio_ci'][0]:.2f}–{v['ratio_ci'][1]:.2f})"
+    c9 = load(d / "precision_d9" / "analysis.json")["comparisons"]
+    got = fmt(c9["deep vs typed|D0C"])
+    record("Deep/typed ratio η at d = 9, correlated background matching (Fig. 2a)", "1.62 (1.49–1.77)", got, level,
+           got == "1.62 (1.49–1.77)")
+    eta = c9["deep vs typed|D0C"]
+    red = [round(100 * (1 - 1 / x)) for x in (eta["ratio"], eta["ratio_ci"][0], eta["ratio_ci"][1])]
+    got = f"{red[0]}% ({red[1]}–{red[2]}%)"
+    record("Typed reduction in excess risk, 1 − 1/η (abstract)", "38% (33–44%)", got, level, got == "38% (33–44%)")
+    got = ", ".join(f"{c9[f'deep vs typed|{k}']['ratio']:.2f}" for k in ("FC", "D0", "F"))
+    record("η for the other three decoders (Fig. 2a)", "1.43, 1.36, 1.28", got, level, got == "1.43, 1.36, 1.28")
+    c13 = load(d / "precision_analysis.json")["precision_d13"]["comparisons"]
+    got = f"{fmt(c13['deep vs typed|F'])}, {fmt(c13['deep vs typed|FC'])}"
+    record("d = 13 oracle ratios, 1,200 impacts (Fig. 5a)", "0.96 (0.62–1.56), 1.12 (0.48–2.65)", got, level,
+           got == "0.96 (0.62–1.56), 1.12 (0.48–2.65)")
+    rg = load(d / "regime" / "analysis.json")["contrast"]
+    got = fmt(rg["dur5|shallow - dur5|typed_paper|D0"])
+    record("Five-round burst cap, shallow/typed ratio, background matching (Fig. 5b)", "0.60 (0.28–0.97)", got, level,
+           got == "0.60 (0.28–0.97)")
+    print("[3/4] archived P1 analyses verified against the package checksums")
+
+
+NOT_HERE = []
 
 
 def main() -> int:
@@ -176,6 +207,7 @@ def main() -> int:
     r9()
     r1()
     stored_d9()
+    archive_p1()
     for item, paper in NOT_HERE:
         rows.append((item, paper, "not in this repository", "figures/figure_data.json only", "not reproducible"))
 

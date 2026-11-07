@@ -1,0 +1,530 @@
+{
+ "name": "regime",
+ "d": 9,
+ "pool_seed": 76001,
+ "n_pool": 20000,
+ "alloc": [
+  300,
+  180,
+  120
+ ],
+ "footprints": [
+  1.0,
+  0.7,
+  1.4,
+  2.0
+ ],
+ "decoders": [
+  "D0",
+  "F"
+ ],
+ "shots": 1024,
+ "seed": 76002,
+ "conditions": [
+  {
+   "name": "rs0|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "report_scale": 0.0,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "rs0.25|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "report_scale": 0.25,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "rs0.5|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "report_scale": 0.5,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "rs1|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "report_scale": 1.0,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "rs2|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "report_scale": 2.0,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "dur2|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "duration": 2,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "dur5|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "duration": 5,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "dur10|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "duration": 10,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "dur20|memory",
+   "mask_name": "memory",
+   "tm": 9,
+   "duration": 20,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "fp0.7|memory",
+   "mask_name": "fp0.7|memory",
+   "tm": 9,
+   "footprint": 0.7,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "fp1.4|memory",
+   "mask_name": "fp1.4|memory",
+   "tm": 9,
+   "footprint": 1.4,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "fp2|memory",
+   "mask_name": "fp2|memory",
+   "tm": 9,
+   "footprint": 2.0,
+   "mask_hash": "01c87f87819dcfe9"
+  },
+  {
+   "name": "rs0|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "report_scale": 0.0,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "rs0.25|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "report_scale": 0.25,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "rs0.5|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "report_scale": 0.5,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "rs1|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "report_scale": 1.0,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "rs2|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "report_scale": 2.0,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "dur2|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "duration": 2,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "dur5|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "duration": 5,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "dur10|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "duration": 10,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "dur20|shallow",
+   "mask_name": "shallow",
+   "tm": 9,
+   "duration": 20,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "fp0.7|shallow",
+   "mask_name": "fp0.7|shallow",
+   "tm": 9,
+   "footprint": 0.7,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "fp1.4|shallow",
+   "mask_name": "fp1.4|shallow",
+   "tm": 9,
+   "footprint": 1.4,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "fp2|shallow",
+   "mask_name": "fp2|shallow",
+   "tm": 9,
+   "footprint": 2.0,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "rs0|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "report_scale": 0.0,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "rs0.25|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "report_scale": 0.25,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "rs0.5|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "report_scale": 0.5,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "rs1|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "report_scale": 1.0,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "rs2|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "report_scale": 2.0,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "dur2|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "duration": 2,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "dur5|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "duration": 5,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "dur10|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "duration": 10,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "dur20|deep",
+   "mask_name": "deep",
+   "tm": 9,
+   "duration": 20,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "fp0.7|deep",
+   "mask_name": "fp0.7|deep",
+   "tm": 9,
+   "footprint": 0.7,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "fp1.4|deep",
+   "mask_name": "fp1.4|deep",
+   "tm": 9,
+   "footprint": 1.4,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "fp2|deep",
+   "mask_name": "fp2|deep",
+   "tm": 9,
+   "footprint": 2.0,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "rs0|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "report_scale": 0.0,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "rs0.25|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "report_scale": 0.25,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "rs0.5|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "report_scale": 0.5,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "rs1|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "report_scale": 1.0,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "rs2|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "report_scale": 2.0,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "dur2|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "duration": 2,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "dur5|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "duration": 5,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "dur10|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "duration": 10,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "dur20|typed_paper",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "duration": 20,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "fp0.7|typed_paper",
+   "mask_name": "fp0.7|typed_paper",
+   "tm": 9,
+   "footprint": 0.7,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "fp1.4|typed_paper",
+   "mask_name": "fp1.4|typed_paper",
+   "tm": 9,
+   "footprint": 1.4,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "fp2|typed_paper",
+   "mask_name": "fp2|typed_paper",
+   "tm": 9,
+   "footprint": 2.0,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "rs0|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "report_scale": 0.0,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "rs0.25|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "report_scale": 0.25,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "rs0.5|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "report_scale": 0.5,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "rs1|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "report_scale": 1.0,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "rs2|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "report_scale": 2.0,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "dur2|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "duration": 2,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "dur5|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "duration": 5,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "dur10|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "duration": 10,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "dur20|priority",
+   "mask_name": "priority",
+   "tm": 9,
+   "duration": 20,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "fp0.7|priority",
+   "mask_name": "fp0.7|priority",
+   "tm": 9,
+   "footprint": 0.7,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "fp1.4|priority",
+   "mask_name": "fp1.4|priority",
+   "tm": 9,
+   "footprint": 1.4,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "fp2|priority",
+   "mask_name": "fp2|priority",
+   "tm": 9,
+   "footprint": 2.0,
+   "mask_hash": "467b777c5e418e10"
+  },
+  {
+   "name": "rs0|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "report_scale": 0.0,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "rs0.25|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "report_scale": 0.25,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "rs0.5|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "report_scale": 0.5,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "rs1|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "report_scale": 1.0,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "rs2|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "report_scale": 2.0,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "dur2|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "duration": 2,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "dur5|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "duration": 5,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "dur10|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "duration": 10,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "dur20|universal",
+   "mask_name": "universal",
+   "tm": 9,
+   "duration": 20,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "fp0.7|universal",
+   "mask_name": "fp0.7|universal",
+   "tm": 9,
+   "footprint": 0.7,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "fp1.4|universal",
+   "mask_name": "fp1.4|universal",
+   "tm": 9,
+   "footprint": 1.4,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  },
+  {
+   "name": "fp2|universal",
+   "mask_name": "fp2|universal",
+   "tm": 9,
+   "footprint": 2.0,
+   "mask_hash": "efbb03b7a7f6fd3c"
+  }
+ ],
+ "events_file": "events_d9_seed76001_n20000_300-180-120_fp1-0.7-1.4-2.npz"
+}
