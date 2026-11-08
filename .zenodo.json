@@ -1,0 +1,27 @@
+{
+  "title": "Code and data for \"Circuit-aware protection against burst errors in lattice surgery\"",
+  "upload_type": "dataset",
+  "creators": [
+    {"name": "Kim, Eric"}
+  ],
+  "description": "<p>Simulation data and analysis code for the paper <em>Circuit-aware protection against burst errors in lattice surgery</em> (E. Kim). The archive contains per-event failure counts for six simulation studies of a distance-9 and distance-13 lattice-surgery CNOT under burst errors (the protection-count sweep, the original Fig. 2a, Fig. 5a and Fig. 5b,c cohorts, a realistic-decoder study and a response-model study), the stored analyses of the distance-9 mechanism studies, SHA-256 checksums, and Python code that recomputes every reported value from the per-event counts and compares it with the paper.</p><p>Reproduce with <code>pip install -r requirements.txt</code> followed by <code>./step1_verify_data.sh</code>, <code>./step2_recompute_results.sh</code> and <code>./step3_compare_with_paper.sh</code>. File formats are described in <code>data/README.md</code>.</p><p>Data are released under CC BY 4.0; code under the MIT License.</p>",
+  "license": "cc-by-4.0",
+  "keywords": [
+    "quantum error correction",
+    "lattice surgery",
+    "surface code",
+    "burst errors",
+    "high-energy impacts",
+    "superconducting qubits",
+    "gap engineering"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Noro-Official/Lattice-surgery-burst-protection",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "version": "1.0.0"
+}
