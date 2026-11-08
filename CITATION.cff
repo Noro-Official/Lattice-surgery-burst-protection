@@ -12,7 +12,7 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.24046122"
     description: "Zenodo archive, version 1.0.0"
-version: "1.0.0"
+version: "1.1.0"
 repository-code: "https://github.com/Noro-Official/Lattice-surgery-burst-protection"
 license: MIT
 keywords:

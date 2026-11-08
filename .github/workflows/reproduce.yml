@@ -21,6 +21,8 @@ jobs:
         run: ./step2_recompute_results.sh
       - name: "Step 3: compare with the paper"
         run: ./step3_compare_with_paper.sh
+      - name: "Calibration extension: standalone recompute"
+        run: python data/calibration_extension/recompute_results.py
       - name: Job summary
         if: always()
         run: test -f out/summary.md && cat out/summary.md >> "$GITHUB_STEP_SUMMARY" || true

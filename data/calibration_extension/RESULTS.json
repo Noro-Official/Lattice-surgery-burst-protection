@@ -1,0 +1,509 @@
+[
+ {
+  "wave": "A0",
+  "energy_scale": 1,
+  "decoupling": "standard",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.0007518513997395834,
+   "deep": 0.00043088785807291667,
+   "typed_paper": 0.0003011678059895833
+  },
+  "excess_ci": {
+   "shallow": [
+    0.0004995414386298052,
+    0.0010389367964435078
+   ],
+   "deep": [
+    0.00034332569934558964,
+    0.0005284925964417931
+   ],
+   "typed_paper": [
+    0.0002210979058566355,
+    0.0003808947320660674
+   ]
+  },
+  "eta_deep_over_typed": 1.4307235019928395,
+  "eta_ci": [
+   1.1139258097989457,
+   1.896268317445836
+  ],
+  "eta_resolved_gt1": true,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 2.4964534216037295,
+  "shallow_over_typed_ci": [
+   1.5765494176237473,
+   3.9162831461102243
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "A",
+  "energy_scale": 1,
+  "decoupling": "echo",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.00074566650390625,
+   "deep": 0.0004442342122395833,
+   "typed_paper": 0.00035194905598958336
+  },
+  "excess_ci": {
+   "shallow": [
+    0.0004928719925439924,
+    0.001030214469808529
+   ],
+   "deep": [
+    0.0003445113366133666,
+    0.0005526243775441686
+   ],
+   "typed_paper": [
+    0.00027146693038872455,
+    0.0004340163723706975
+   ]
+  },
+  "eta_deep_over_typed": 1.2622116885369095,
+  "eta_ci": [
+   1.0197486701493457,
+   1.580435619865662
+  ],
+  "eta_resolved_gt1": true,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 2.118677380195387,
+  "shallow_over_typed_ci": [
+   1.3461790548029882,
+   3.2275203853983583
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "A",
+  "energy_scale": 10,
+  "decoupling": "standard",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.05533713785807293,
+   "deep": 0.04774631754557292,
+   "typed_paper": 0.04759706624348958
+  },
+  "excess_ci": {
+   "shallow": [
+    0.04825292555776069,
+    0.06642350949105179
+   ],
+   "deep": [
+    0.042106688564659836,
+    0.05370098369383821
+   ],
+   "typed_paper": [
+    0.04167808893966322,
+    0.054209753831413555
+   ]
+  },
+  "eta_deep_over_typed": 1.0031357248221942,
+  "eta_ci": [
+   0.9529192892080589,
+   1.0578660117201903
+  ],
+  "eta_resolved_gt1": false,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.1626165691597021,
+  "shallow_over_typed_ci": [
+   1.013780148331355,
+   1.4653289619692762
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "A",
+  "energy_scale": 10,
+  "decoupling": "echo",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.05485211181640625,
+   "deep": 0.047484273274739586,
+   "typed_paper": 0.047360738118489586
+  },
+  "excess_ci": {
+   "shallow": [
+    0.04845720367086148,
+    0.0658908710768154
+   ],
+   "deep": [
+    0.04177801016070483,
+    0.053546404791961176
+   ],
+   "typed_paper": [
+    0.04144422394785273,
+    0.0538558541162961
+   ]
+  },
+  "eta_deep_over_typed": 1.00260838747785,
+  "eta_ci": [
+   0.957280306321873,
+   1.0505666845141366
+  ],
+  "eta_resolved_gt1": false,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.1581768780540191,
+  "shallow_over_typed_ci": [
+   1.0340171389736152,
+   1.4594997872016569
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "A",
+  "energy_scale": 100,
+  "decoupling": "standard",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.26256858317057297,
+   "deep": 0.2528890584309896,
+   "typed_paper": 0.25971197509765626
+  },
+  "excess_ci": {
+   "shallow": [
+    0.2382056415617035,
+    0.29460616559598646
+   ],
+   "deep": [
+    0.2257286829892902,
+    0.2832441783181842
+   ],
+   "typed_paper": [
+    0.23054702389012874,
+    0.29089562062306856
+   ]
+  },
+  "eta_deep_over_typed": 0.9737289100200284,
+  "eta_ci": [
+   0.9493913707995899,
+   1.000246401966503
+  ],
+  "eta_resolved_gt1": false,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.010999138841567,
+  "shallow_over_typed_ci": [
+   0.9967893926227319,
+   1.1089664578445317
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "A",
+  "energy_scale": 100,
+  "decoupling": "echo",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.2612645467122396,
+   "deep": 0.2528644816080729,
+   "typed_paper": 0.25956353759765627
+  },
+  "excess_ci": {
+   "shallow": [
+    0.23698927179790377,
+    0.29305496013662935
+   ],
+   "deep": [
+    0.22557315831409647,
+    0.28317287128296964
+   ],
+   "typed_paper": [
+    0.23015143896524562,
+    0.29103995356523865
+   ]
+  },
+  "eta_deep_over_typed": 0.9741910745569841,
+  "eta_ci": [
+   0.948490364037887,
+   1.0005704215581692
+  ],
+  "eta_resolved_gt1": false,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.006553343856871,
+  "shallow_over_typed_ci": [
+   0.9931591980019653,
+   1.099100251974592
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "B",
+  "energy_scale": 3,
+  "decoupling": "standard",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.008313374837239585,
+   "deep": 0.00686334228515625,
+   "typed_paper": 0.005730204264322916
+  },
+  "excess_ci": {
+   "shallow": [
+    0.007091706263786744,
+    0.010396285425398775
+   ],
+   "deep": [
+    0.005795728339657645,
+    0.008057322595727008
+   ],
+   "typed_paper": [
+    0.005027316941593883,
+    0.006504991176954609
+   ]
+  },
+  "eta_deep_over_typed": 1.1977482771231063,
+  "eta_ci": [
+   1.0894836982470326,
+   1.3121118668562637
+  ],
+  "eta_resolved_gt1": true,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.4507990385264038,
+  "shallow_over_typed_ci": [
+   1.221467208470547,
+   1.8719186219530515
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "B",
+  "energy_scale": 3,
+  "decoupling": "echo",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.008234273274739584,
+   "deep": 0.006938374837239584,
+   "typed_paper": 0.00567633056640625
+  },
+  "excess_ci": {
+   "shallow": [
+    0.00706009567912186,
+    0.010301812739841744
+   ],
+   "deep": [
+    0.0057871751677339295,
+    0.008167935139435105
+   ],
+   "typed_paper": [
+    0.00499331388768896,
+    0.006427751770841817
+   ]
+  },
+  "eta_deep_over_typed": 1.2223345268688868,
+  "eta_ci": [
+   1.095822639225681,
+   1.3578350843413616
+  ],
+  "eta_resolved_gt1": true,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.450633147313828,
+  "shallow_over_typed_ci": [
+   1.2245531024312226,
+   1.883895424798976
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "B",
+  "energy_scale": 30,
+  "decoupling": "standard",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.13685780843098957,
+   "deep": 0.1327116495768229,
+   "typed_paper": 0.13192649332682294
+  },
+  "excess_ci": {
+   "shallow": [
+    0.12199738192265845,
+    0.16006499494833543
+   ],
+   "deep": [
+    0.11390653289215895,
+    0.15369434589001085
+   ],
+   "typed_paper": [
+    0.1132840714324312,
+    0.1524637894328446
+   ]
+  },
+  "eta_deep_over_typed": 1.005951467595329,
+  "eta_ci": [
+   0.9707237432606033,
+   1.0447255880525452
+  ],
+  "eta_resolved_gt1": false,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.0373792631018415,
+  "shallow_over_typed_ci": [
+   1.0067109368695066,
+   1.222346936832564
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "B",
+  "energy_scale": 30,
+  "decoupling": "echo",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.1374440714518229,
+   "deep": 0.13227659098307293,
+   "typed_paper": 0.13249192301432292
+  },
+  "excess_ci": {
+   "shallow": [
+    0.12275393772954253,
+    0.16093686811975974
+   ],
+   "deep": [
+    0.11349280921356195,
+    0.1536758382082586
+   ],
+   "typed_paper": [
+    0.11375326432264665,
+    0.15339815863111958
+   ]
+  },
+  "eta_deep_over_typed": 0.9983747535219433,
+  "eta_ci": [
+   0.9629373109510815,
+   1.036738390152018
+  ],
+  "eta_resolved_gt1": false,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.0373769836291429,
+  "shallow_over_typed_ci": [
+   1.0086891745685138,
+   1.2273273147605839
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "C",
+  "energy_scale": 1,
+  "decoupling": "echo",
+  "trap_multiplier": 10,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.0007210896809895834,
+   "deep": 0.00042600504557291667,
+   "typed_paper": 0.0002953084309895833
+  },
+  "excess_ci": {
+   "shallow": [
+    0.0004648340161459336,
+    0.0010155501494384942
+   ],
+   "deep": [
+    0.00033207911419382626,
+    0.0005289434328491787
+   ],
+   "typed_paper": [
+    0.00022231264153047084,
+    0.0003651774921732591
+   ]
+  },
+  "eta_deep_over_typed": 1.4425766448501551,
+  "eta_ci": [
+   1.1456435802197318,
+   1.8309539157402508
+  ],
+  "eta_resolved_gt1": true,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 2.4418188081295216,
+  "shallow_over_typed_ci": [
+   1.5159550283852488,
+   3.796554300159025
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "C",
+  "energy_scale": 100,
+  "decoupling": "echo",
+  "trap_multiplier": 10,
+  "protected_gap_ghz": 12.0,
+  "excess": {
+   "shallow": 0.26014654541015625,
+   "deep": 0.25115891520182293,
+   "typed_paper": 0.25730572509765626
+  },
+  "excess_ci": {
+   "shallow": [
+    0.23580118254114965,
+    0.29238790523305047
+   ],
+   "deep": [
+    0.22350279386526833,
+    0.28153133045115014
+   ],
+   "typed_paper": [
+    0.22804713717555475,
+    0.28840588430858916
+   ]
+  },
+  "eta_deep_over_typed": 0.9761108700807166,
+  "eta_ci": [
+   0.9501164728836254,
+   1.0039942079037125
+  ],
+  "eta_resolved_gt1": false,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 1.0110406416779953,
+  "shallow_over_typed_ci": [
+   0.9956226676336045,
+   1.1125165532392998
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ },
+ {
+  "wave": "C",
+  "energy_scale": 1,
+  "decoupling": "echo",
+  "trap_multiplier": 1,
+  "protected_gap_ghz": 10.0,
+  "excess": {
+   "shallow": 0.0008049112955729168,
+   "deep": 0.0005210571289062499,
+   "typed_paper": 0.00036106363932291666
+  },
+  "excess_ci": {
+   "shallow": [
+    0.000549158231525007,
+    0.0010988684695928653
+   ],
+   "deep": [
+    0.0004079291029108462,
+    0.0006382617916473733
+   ],
+   "typed_paper": [
+    0.0002850735719447167,
+    0.00043570283744477775
+   ]
+  },
+  "eta_deep_over_typed": 1.443117146559982,
+  "eta_ci": [
+   1.1508636798448184,
+   1.809161390453654
+  ],
+  "eta_resolved_gt1": true,
+  "eta_resolved_lt1": false,
+  "shallow_over_typed": 2.2292781878627377,
+  "shallow_over_typed_ci": [
+   1.460948109567549,
+   3.3317306399506244
+  ],
+  "eta_boot_frac_nonfinite": 0.0
+ }
+]

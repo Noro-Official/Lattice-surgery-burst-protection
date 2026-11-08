@@ -14,6 +14,7 @@ Simulation outputs for "Circuit-aware protection against burst errors in lattice
 | [`r9_estimated_burst_decoder/`](r9_estimated_burst_decoder/README.md) | Estimated-burst decoder break-even (≈ 4.3%) | 1,200 | 9 | D0, D0c, F, Fc, Ff, E, L1, L3, K | 1,024 |
 | [`r1_d13_response_models/`](r1_d13_response_models/README.md) | SM S5, three response models | 2,000 | 13 | D0, D0c, F, Fc | 1,024 |
 | [`d9_mechanism_inputs/`](d9_mechanism_inputs/README.md) | Fig. 3c, Fig. 4b, SM S1, SM S4 | — | 9 | — | stored analyses only |
+| [`calibration_extension/`](calibration_extension/RUN_RESULTS.md) | Not in the paper (v1.1.0): η vs impact energy, decoupling, trapping | 600 | 9 | D0C | 1,024 |
 
 Decoder labels: **D0** background matching; **D0C**/**D0c** background matching with correlations; **F** event-informed
 oracle; **FC**/**Fc** oracle with correlations. The R9-only decoders (**Ff**, **E**, **L1**, **L3**, **K**) are
@@ -55,6 +56,21 @@ All studies share the following conventions.
 | `recompute_results.py` | Python | the export's own standalone check (NumPy only) |
 | `analysis_source/` | Python | the sweep's run and analysis scripts; they need the full simulation tree |
 | `SHA256SUMS.json` | JSON | the export's checksums |
+
+### `calibration_extension/`
+
+Same formats as `count_sweep/` (same event bank and quiet file), with these differences:
+
+| File | Format | Contents |
+|---|---|---|
+| `per_event_counts.csv.gz` | gzip CSV, 46,800 rows | as in `count_sweep/`; `condition` = `<layout>\|E<energy scale>\|<decoupling>\|T<trap multiplier>\|G<protected gap, GHz>` with layout `shallow`, `deep` or `typed_paper` |
+| `RESULTS.json` | JSON | one row per physics setting: per-layout excess risks and intervals, `eta_deep_over_typed`, `eta_ci`, `shallow_over_typed` |
+| `ANCHOR.json` | JSON | pre-registered regression of the ×1 standard setting against `count_sweep/` |
+| `STEP5_CHECKS.json`, `STEP5_TIMING.json` | JSON | pre-freeze controls: bit-identity of default channels, peak-shift table, runtime, pooled ×100 saturation |
+| `FROZEN_PROTOCOL.json`, `study_calext_*.json` | JSON | pre-registration and study definitions |
+| `recompute_results.py` | Python | standalone check (NumPy only) |
+| `eta_vs_energy.png`, `.pdf` | figure | η against energy scale |
+| `analysis_source/` | Python | run, analysis and export scripts; they need the full simulation tree |
 
 ### `p1_archive/`
 

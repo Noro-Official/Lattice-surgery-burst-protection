@@ -103,6 +103,17 @@ Step 3 prints the following table.
 "Per-event counts" means the value is recomputed from the integer failure counts of every simulated impact.
 "Stored analysis" means the value is read from an analysis file whose per-event counts are not included.
 
+## Calibration extension (version 1.1.0, not in the paper)
+
+[`data/calibration_extension/`](data/calibration_extension/RUN_RESULTS.md) reruns the Fig. 2a layouts on the count
+sweep's 600-impact bank. It varies three model choices the paper held fixed: impact energy (×1 to ×100, where ×100 is
+the scale at which the phonon generation was calibrated to Willow's 2 MHz median peak shift), standard versus echoed
+decoupling, and faster trapping or a 10 GHz gap on protected sites. The deep/typed ratio η is resolved above 1 only for
+small impacts: 1.43 (1.11–1.90) at the paper's scale and 1.20 (1.09–1.31) at ×3. From ×10 it is indistinguishable from
+1, including for Willow-calibrated impacts with an echoed circuit: 0.97 (0.95–1.00). Decoupling and the trap and gap
+variants do not change this. Check it with `python data/calibration_extension/recompute_results.py`; the workflow
+runs this as an extra step.
+
 ## Known differences and caveats
 
 - **SM S5 oracle comparisons.** The paper says these comparisons are not resolved. Under the correlated oracle (Fc),
@@ -128,6 +139,8 @@ Step 3 prints the following table.
     - [`data/r9_estimated_burst_decoder/`](data/r9_estimated_burst_decoder/): realistic decoders, break-even value.
     - [`data/r1_d13_response_models/`](data/r1_d13_response_models/): three response models at d = 13 (SM S5).
     - [`data/d9_mechanism_inputs/`](data/d9_mechanism_inputs/): stored analyses for Figs. 3c and 4b and SM S1, S4.
+    - [`data/calibration_extension/`](data/calibration_extension/RUN_RESULTS.md): energy-scale, decoupling and trapping
+      extension of Fig. 2a (version 1.1.0; not in the paper).
 - [`src/lsburst/`](src/lsburst/): Python package; one module per study, each with `analyze(data_dir) -> dict`.
     - [`count_sweep.py`](src/lsburst/count_sweep.py), [`p1_archive.py`](src/lsburst/p1_archive.py),
       [`r9_estimated_decoder.py`](src/lsburst/r9_estimated_decoder.py),
@@ -157,7 +170,7 @@ If you use these data or this code, please cite the paper and this archive:
   author    = {Kim, Eric},
   year      = {2026},
   publisher = {Zenodo},
-  version   = {1.0.0},
+  version   = {1.1.0},
   doi       = {10.5281/zenodo.24046121},
   url       = {https://doi.org/10.5281/zenodo.24046121}
 }

@@ -1,0 +1,110 @@
+{
+ "name": "calext_B",
+ "d": 9,
+ "pool_seed": 78001,
+ "n_pool": 20000,
+ "alloc": [
+  300,
+  180,
+  120
+ ],
+ "decoders": [
+  "D0C"
+ ],
+ "shots": 1024,
+ "seed": 78002,
+ "block_events": 4,
+ "conditions": [
+  {
+   "name": "shallow|E3|standard|T1|G12",
+   "mask_name": "shallow",
+   "tm": 9,
+   "energy_scale": 3.0,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "deep|E3|standard|T1|G12",
+   "mask_name": "deep",
+   "tm": 9,
+   "energy_scale": 3.0,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "typed_paper|E3|standard|T1|G12",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "energy_scale": 3.0,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "shallow|E3|echo|T1|G12",
+   "mask_name": "shallow",
+   "tm": 9,
+   "energy_scale": 3.0,
+   "decoupling": "echo",
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "deep|E3|echo|T1|G12",
+   "mask_name": "deep",
+   "tm": 9,
+   "energy_scale": 3.0,
+   "decoupling": "echo",
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "typed_paper|E3|echo|T1|G12",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "energy_scale": 3.0,
+   "decoupling": "echo",
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "shallow|E30|standard|T1|G12",
+   "mask_name": "shallow",
+   "tm": 9,
+   "energy_scale": 30.0,
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "deep|E30|standard|T1|G12",
+   "mask_name": "deep",
+   "tm": 9,
+   "energy_scale": 30.0,
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "typed_paper|E30|standard|T1|G12",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "energy_scale": 30.0,
+   "mask_hash": "feb78d5b7189d641"
+  },
+  {
+   "name": "shallow|E30|echo|T1|G12",
+   "mask_name": "shallow",
+   "tm": 9,
+   "energy_scale": 30.0,
+   "decoupling": "echo",
+   "mask_hash": "d8ba0ac6af1b5bce"
+  },
+  {
+   "name": "deep|E30|echo|T1|G12",
+   "mask_name": "deep",
+   "tm": 9,
+   "energy_scale": 30.0,
+   "decoupling": "echo",
+   "mask_hash": "1603afb01c8bb608"
+  },
+  {
+   "name": "typed_paper|E30|echo|T1|G12",
+   "mask_name": "typed_paper",
+   "tm": 9,
+   "energy_scale": 30.0,
+   "decoupling": "echo",
+   "mask_hash": "feb78d5b7189d641"
+  }
+ ],
+ "events_file": "events_d9_seed78001_n20000_300-180-120_fp1.npz"
+}

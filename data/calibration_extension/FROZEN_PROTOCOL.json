@@ -1,0 +1,341 @@
+{
+ "study": "calibration_extension_20261108",
+ "date": "2026-11-08",
+ "status": "frozen before any campaign trajectory; only the Step 5 controls (regression, std-vs-echo channel totals, peak-shift table, 4-event timing, pooled x100 saturation) were run, none of which computes a layout contrast",
+ "question": "Does the typed band's advantage over the deep (and shallow) type-blind band survive (1) impact energies up to the generation-scale calibration (Willow median 2 MHz peak shift), (2) echoed instead of standard decoupling, (3) M1-style faster trapping on protected sites, (4) a JJ-Only 10 GHz protected gap?",
+ "model_changes": {
+  "energy_scale": "x0 (delivered dose) multiplied by energy_scale before the bridge; delivery is linear in energy, all nonlinearity (recombination, tunnelling) is downstream. Relative to the paper bank (0.01 x config energy range); x100 = config range on which generation_scale was solved.",
+  "decoupling": "passed to channels_from_site_design (Platform.decoupling); 'echo' uses the frozen power-law echo residual.",
+  "trap_multiplier": "trapping_hz of every non-weak site (protected ancillas AND data qubits) = base x multiplier; weak sites base.",
+  "protected_gap": "protected ancilla gap; data qubits stay 12 GHz. Hybrid (Willow f_q, mean gap), not an MIT device model.",
+  "defaults_bit_identical": true
+ },
+ "frozen_draw": {
+  "generation_scale": 58.48734616940282,
+  "trapping_hz": 245.14993289235156,
+  "echo_model": "power_law",
+  "kappa": 0.5
+ },
+ "grid": [
+  {
+   "wave": "A0",
+   "tag": "E1|standard|T1|G12",
+   "energy_scale_rel_bank": 1,
+   "energy_scale_rel_generation_calibration": 0.01,
+   "decoupling": "standard",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "A",
+   "tag": "E1|echo|T1|G12",
+   "energy_scale_rel_bank": 1,
+   "energy_scale_rel_generation_calibration": 0.01,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "A",
+   "tag": "E10|standard|T1|G12",
+   "energy_scale_rel_bank": 10,
+   "energy_scale_rel_generation_calibration": 0.1,
+   "decoupling": "standard",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "A",
+   "tag": "E10|echo|T1|G12",
+   "energy_scale_rel_bank": 10,
+   "energy_scale_rel_generation_calibration": 0.1,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "A",
+   "tag": "E100|standard|T1|G12",
+   "energy_scale_rel_bank": 100,
+   "energy_scale_rel_generation_calibration": 1.0,
+   "decoupling": "standard",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "A",
+   "tag": "E100|echo|T1|G12",
+   "energy_scale_rel_bank": 100,
+   "energy_scale_rel_generation_calibration": 1.0,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "B",
+   "tag": "E3|standard|T1|G12",
+   "energy_scale_rel_bank": 3,
+   "energy_scale_rel_generation_calibration": 0.03,
+   "decoupling": "standard",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "B",
+   "tag": "E3|echo|T1|G12",
+   "energy_scale_rel_bank": 3,
+   "energy_scale_rel_generation_calibration": 0.03,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "B",
+   "tag": "E30|standard|T1|G12",
+   "energy_scale_rel_bank": 30,
+   "energy_scale_rel_generation_calibration": 0.3,
+   "decoupling": "standard",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "B",
+   "tag": "E30|echo|T1|G12",
+   "energy_scale_rel_bank": 30,
+   "energy_scale_rel_generation_calibration": 0.3,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "C",
+   "tag": "E1|echo|T10|G12",
+   "energy_scale_rel_bank": 1,
+   "energy_scale_rel_generation_calibration": 0.01,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 10,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "C",
+   "tag": "E100|echo|T10|G12",
+   "energy_scale_rel_bank": 100,
+   "energy_scale_rel_generation_calibration": 1.0,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 10,
+   "protected_ancilla_gap_ghz": 12.0
+  },
+  {
+   "wave": "C",
+   "tag": "E1|echo|T1|G10",
+   "energy_scale_rel_bank": 1,
+   "energy_scale_rel_generation_calibration": 0.01,
+   "decoupling": "echo",
+   "trap_multiplier_protected": 1,
+   "protected_ancilla_gap_ghz": 10.0
+  }
+ ],
+ "layouts": {
+  "shallow": {
+   "hash": "d8ba0ac6af1b5bce",
+   "weak_count": 72
+  },
+  "deep": {
+   "hash": "1603afb01c8bb608",
+   "weak_count": 72
+  },
+  "typed_paper": {
+   "hash": "feb78d5b7189d641",
+   "weak_count": 72
+  }
+ },
+ "layout_definitions": "studies.family(d=9, f=0.3, T_M=9): shallow, deep (widest feasible type-blind band), typed_paper (= count sweep n168|typed)",
+ "bank": {
+  "file": "events_d9_seed78001_n20000_300-180-120_fp1.npz",
+  "sha256": "ce2753860841bdc8d2451eefe34a58dfc218d767d60cc7308b1558077f269372",
+  "pool_seed": 78001,
+  "n_pool": 20000,
+  "alloc": [
+   300,
+   180,
+   120
+  ]
+ },
+ "trajectories": {
+  "shots": 1024,
+  "seed_base": 78002,
+  "seed_rule": "p1core.task_seed(78002, event, mode): shared by every condition (common random numbers across layouts AND physics settings)",
+  "decoder": "D0C",
+  "block_events": 4,
+  "tasks_per_setting": 3600,
+  "tasks_total": 46800
+ },
+ "endpoints": {
+  "primary": "eta = R(deep) / R(typed) per setting, R = impact-conditioned excess risk (worse input mode, stratified mean minus D0C quiet), 95% paired bootstrap percentile interval",
+  "secondary": [
+   "shallow/typed ratio per setting",
+   "excess risk per layout per setting",
+   "eta vs energy scale curve (std and echo)"
+  ],
+  "resolved": "95% interval excludes 1",
+  "estimator": "analyze_calext.py: B=4000, seed 20261108, Dirichlet(pool_counts+1), Jeffreys quiet draws (quiet_d9.json D0C), identical bootstrap indices for all conditions"
+ },
+ "order_and_looks": [
+  "1. Wave A0 (E1|standard, all three layouts). Look ONLY at the anchor: analyze_calext.py anchor.",
+  "2. Anchor PASS iff, for both typed and shallow, (a) the new point estimate lies in the count sweep's nominal 95% interval (typed [1.74e-4, 3.08e-4], shallow [5.00e-4, 1.06e-3]) AND (b) the 95% paired bootstrap interval of new minus count-sweep excess risk (same events, same estimator) contains 0. Bit-identity is NOT required: the count sweep ran on macOS arm64 and Stim seeded sampling is machine-dependent (CONTROL_REPRODUCTION.json).",
+  "3. Anchor FAIL -> stop and debug; no other setting is run or read.",
+  "4. Anchor PASS -> run waves A, B, C in that order without interim looks; analyse all settings together (analyze_calext.py all)."
+ ],
+ "decision_rules": {
+  "eta_resolved_gt1_at_x100_echo": "Typed placement helps for Willow-scale impacts on a well-decoupled circuit (strongest claim).",
+  "eta_gt1_at_x1_to_x10_not_resolved_at_x100": "Claim restricted to sub-threshold (small/medium) impacts; argue from their rate.",
+  "eta_gt1_at_x100_standard_not_echo": "Large-impact advantage came from unechoed phase errors; the echo result is the device-relevant one.",
+  "trap_x10_changes_eta": "Trapping and placement interact: 'changes sharply' = the trap-x10 eta interval excludes the matching trap-x1 echo point estimate (E1 and E100 separately).",
+  "jj_only_gap": "Reported as a sensitivity point; same rule as trap_x10 against E1|echo.",
+  "all_outcomes_reported": true
+ },
+ "known_limits": [
+  "Post hoc extension on the existing 600-impact bank; no independent impact cohort.",
+  "The bank's strata were defined on x1 dose; scaling is uniform, so strata and weights remain valid, but at x100 the stratification is no longer variance-optimal.",
+  "Quiet baseline unchanged (decoupling and traps act only on burst channels in this model).",
+  "Step 5 x100 saturation (pooled over deep+typed, 20 events): {\"tasks\": 80, \"frac_tasks_fail_ge_0.5\": 0.425, \"frac_tasks_fail_ge_0.1\": 0.85, \"pooled_mean_fail\": 0.40762939453125, \"median_sec_per_task\": 4.022953349980526}",
+  "Total ancilla Pauli mass std vs echo differs by ~6% even at x100 (T1/excitation dominate the summed channel).",
+  "Recovery-class consistency check of the trap prior failed in calibration (0.86-13 ms); trap x10 departs from it on purpose."
+ ],
+ "runtime": {
+  "python": "3.13.12",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "numpy": "2.5.2",
+  "stim": "1.16.0",
+  "pymatching": "2.4.0",
+  "numpy_trapz": "simulation/src/physics/nonmarkov.py already falls back to np.trapezoid; no pin needed",
+  "measured_sec_per_task": {
+   "x1": [
+    3.9335045000188984,
+    1.867426200013142,
+    2.1128734999801964,
+    1.64812189998338
+   ],
+   "x100": [
+    10.41146580001805,
+    6.644369999994524,
+    4.434388800000306,
+    1.877044000022579
+   ],
+   "x100_saturation_median": 4.022953349980526,
+   "workers_during_measurement": 22
+  }
+ },
+ "code_sha256": {
+  "p1core.py": "f4e247b698a7fedc1f693fc0249c5659e9b419e61b341372063c143abadccaf9",
+  "campaign.py": "0e4fd7915f604e6d9031519bec317b69cc2443120e34d5a179e8b2423d00c4e9",
+  "studies.py": "83fed62b535d1215a813d072e1ab23b15c347a1b8f43534687878d60f464bf73",
+  "calext_studies.py": "04e8d5ef5849642f8ccf80148321a460e8fe793254422e867e06c245c37d6044",
+  "analyze_calext.py": "fdae04bd583d3417a4bc8b981f85b41892eecbd102fd0f6ebe4bee4817a3c6f0",
+  "config.json": "6ae3cdc46d8b56b43d35783f2e4772d25bf0ebffb938eafdeadb12bb5f4ec176",
+  "quiet_d9.json": "44f3282299c1ecd9648a49983db7ebfc2a8fb4adbb614e279aa296454ac697da",
+  "simulation/src/analysis/pacer_continuous.py": "611420d6cef4189732cbc1f2b7c52aef78cec6fa11b2abd57258149be116163a",
+  "simulation/src/physics/pacer_qp_bridge_v1.py": "8f8320fd87ba3a395a96273f791787da092536992cb5b32fc494b32c9e9fc655",
+  "simulation/src/physics/nonmarkov.py": "c78dc226fd63bdb66be45b7f8b25d75deb4b8d697fb1fa6d1d79370e53155b63",
+  "simulation/src/analysis/pacer_lattice_surgery.py": "ef91d5f1529c67c08e0cd5bdd5b2d52250fe6cd96b23e30e91990a656a8b81ab",
+  "simulation/src/analysis/pacer_readout_model.py": "420987caacfa8e036a8751d121ea9498348f4d28517eca79f3ece6eaa2cd96b9"
+ },
+ "step5_checks": {
+  "mask_hashes": {
+   "shallow": "d8ba0ac6af1b5bce",
+   "deep": "1603afb01c8bb608",
+   "typed_paper": "feb78d5b7189d641"
+  },
+  "mask_weak_counts": {
+   "shallow": 72,
+   "deep": 72,
+   "typed_paper": 72
+  },
+  "regression_bit_identical": true,
+  "standard_vs_echo_total_ancilla_pauli": {
+   "typed_paper|x1": {
+    "standard": 32444.930406742787,
+    "echo": 32435.417101765237,
+    "rel_diff": -0.0002932139122595669
+   },
+   "typed_paper|x100": {
+    "standard": 607957.2485947313,
+    "echo": 570174.5039291794,
+    "rel_diff": -0.06214704200482061
+   },
+   "deep|x1": {
+    "standard": 32421.12741265117,
+    "echo": 32411.411875513317,
+    "rel_diff": -0.0002996668503903672
+   },
+   "deep|x100": {
+    "standard": 579329.9556079926,
+    "echo": 541839.9796089425,
+    "rel_diff": -0.06471264887330962
+   }
+  },
+  "peak_shift_table": {
+   "all_12GHz|x1": {
+    "median_peak_khz": 19.355016337268996,
+    "p90_peak_khz": 87.11282263537628,
+    "median_sites_above_200khz": 0.0,
+    "unweighted_median_peak_khz": 92.91382608401062
+   },
+   "all_12GHz|x3": {
+    "median_peak_khz": 57.98563314774324,
+    "p90_peak_khz": 259.8999707020633,
+    "median_sites_above_200khz": 0.0,
+    "unweighted_median_peak_khz": 277.1164309625472
+   },
+   "all_12GHz|x10": {
+    "median_peak_khz": 192.43475998313005,
+    "p90_peak_khz": 852.0638292941236,
+    "median_sites_above_200khz": 0.0,
+    "unweighted_median_peak_khz": 907.6578245740742
+   },
+   "all_12GHz|x30": {
+    "median_peak_khz": 570.9201983781155,
+    "p90_peak_khz": 2459.692986555272,
+    "median_sites_above_200khz": 6.0,
+    "unweighted_median_peak_khz": 2615.078897340456
+   },
+   "all_12GHz|x100": {
+    "median_peak_khz": 1843.0740311286386,
+    "p90_peak_khz": 7422.820446718502,
+    "median_sites_above_200khz": 21.0,
+    "unweighted_median_peak_khz": 7855.639195670839
+   },
+   "typed_mask|x1": {
+    "median_peak_khz": 18.493253166922432,
+    "p90_peak_khz": 83.94572449251109,
+    "median_sites_above_200khz": 0.0,
+    "unweighted_median_peak_khz": 89.17215878214861
+   },
+   "typed_mask|x3": {
+    "median_peak_khz": 55.40703159341441,
+    "p90_peak_khz": 250.49576464740235,
+    "median_sites_above_200khz": 0.0,
+    "unweighted_median_peak_khz": 266.013043206648
+   },
+   "typed_mask|x10": {
+    "median_peak_khz": 183.91130056193936,
+    "p90_peak_khz": 821.6525896752562,
+    "median_sites_above_200khz": 0.0,
+    "unweighted_median_peak_khz": 871.8155495883321
+   },
+   "typed_mask|x30": {
+    "median_peak_khz": 545.8592669019486,
+    "p90_peak_khz": 2372.156399622918,
+    "median_sites_above_200khz": 5.0,
+    "unweighted_median_peak_khz": 2514.9685353303403
+   },
+   "typed_mask|x100": {
+    "median_peak_khz": 1739.639493260503,
+    "p90_peak_khz": 7177.235798209766,
+    "median_sites_above_200khz": 19.0,
+    "unweighted_median_peak_khz": 7527.252248753102
+   }
+  },
+  "peak_shift_note": "Population-weighted by stratum pool fractions; peak over a 0.5 us-3 ms grid of qp_density_with_generation with base trapping; shift = a(gap) f_q x_qp."
+ }
+}

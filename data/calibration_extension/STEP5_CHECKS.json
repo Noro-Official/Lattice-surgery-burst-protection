@@ -1,0 +1,98 @@
+{
+ "mask_hashes": {
+  "shallow": "d8ba0ac6af1b5bce",
+  "deep": "1603afb01c8bb608",
+  "typed_paper": "feb78d5b7189d641"
+ },
+ "mask_weak_counts": {
+  "shallow": 72,
+  "deep": 72,
+  "typed_paper": 72
+ },
+ "regression_bit_identical": true,
+ "standard_vs_echo_total_ancilla_pauli": {
+  "typed_paper|x1": {
+   "standard": 32444.930406742787,
+   "echo": 32435.417101765237,
+   "rel_diff": -0.0002932139122595669
+  },
+  "typed_paper|x100": {
+   "standard": 607957.2485947313,
+   "echo": 570174.5039291794,
+   "rel_diff": -0.06214704200482061
+  },
+  "deep|x1": {
+   "standard": 32421.12741265117,
+   "echo": 32411.411875513317,
+   "rel_diff": -0.0002996668503903672
+  },
+  "deep|x100": {
+   "standard": 579329.9556079926,
+   "echo": 541839.9796089425,
+   "rel_diff": -0.06471264887330962
+  }
+ },
+ "peak_shift_table": {
+  "all_12GHz|x1": {
+   "median_peak_khz": 19.355016337268996,
+   "p90_peak_khz": 87.11282263537628,
+   "median_sites_above_200khz": 0.0,
+   "unweighted_median_peak_khz": 92.91382608401062
+  },
+  "all_12GHz|x3": {
+   "median_peak_khz": 57.98563314774324,
+   "p90_peak_khz": 259.8999707020633,
+   "median_sites_above_200khz": 0.0,
+   "unweighted_median_peak_khz": 277.1164309625472
+  },
+  "all_12GHz|x10": {
+   "median_peak_khz": 192.43475998313005,
+   "p90_peak_khz": 852.0638292941236,
+   "median_sites_above_200khz": 0.0,
+   "unweighted_median_peak_khz": 907.6578245740742
+  },
+  "all_12GHz|x30": {
+   "median_peak_khz": 570.9201983781155,
+   "p90_peak_khz": 2459.692986555272,
+   "median_sites_above_200khz": 6.0,
+   "unweighted_median_peak_khz": 2615.078897340456
+  },
+  "all_12GHz|x100": {
+   "median_peak_khz": 1843.0740311286386,
+   "p90_peak_khz": 7422.820446718502,
+   "median_sites_above_200khz": 21.0,
+   "unweighted_median_peak_khz": 7855.639195670839
+  },
+  "typed_mask|x1": {
+   "median_peak_khz": 18.493253166922432,
+   "p90_peak_khz": 83.94572449251109,
+   "median_sites_above_200khz": 0.0,
+   "unweighted_median_peak_khz": 89.17215878214861
+  },
+  "typed_mask|x3": {
+   "median_peak_khz": 55.40703159341441,
+   "p90_peak_khz": 250.49576464740235,
+   "median_sites_above_200khz": 0.0,
+   "unweighted_median_peak_khz": 266.013043206648
+  },
+  "typed_mask|x10": {
+   "median_peak_khz": 183.91130056193936,
+   "p90_peak_khz": 821.6525896752562,
+   "median_sites_above_200khz": 0.0,
+   "unweighted_median_peak_khz": 871.8155495883321
+  },
+  "typed_mask|x30": {
+   "median_peak_khz": 545.8592669019486,
+   "p90_peak_khz": 2372.156399622918,
+   "median_sites_above_200khz": 5.0,
+   "unweighted_median_peak_khz": 2514.9685353303403
+  },
+  "typed_mask|x100": {
+   "median_peak_khz": 1739.639493260503,
+   "p90_peak_khz": 7177.235798209766,
+   "median_sites_above_200khz": 19.0,
+   "unweighted_median_peak_khz": 7527.252248753102
+  }
+ },
+ "peak_shift_note": "Population-weighted by stratum pool fractions; peak over a 0.5 us-3 ms grid of qp_density_with_generation with base trapping; shift = a(gap) f_q x_qp."
+}

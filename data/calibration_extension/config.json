@@ -1,0 +1,12 @@
+{
+  "experiment": "PACER-P1",
+  "created": "2026-10-29",
+  "note": "New, self-contained contract. Not the historical CNOT cohort and not the native V2 private-bit law.",
+  "schedule": {"pre": 12, "gap": null, "post": 12},
+  "background_probability": 0.001,
+  "gaps_hz": {"strong": 12.0e9, "weak": 5.0e9},
+  "kappa": 0.5,
+  "impact_margin_mm": 1.15,
+  "readout_overrides": {},
+  "weak_fraction": 0.30
+}

@@ -6,7 +6,7 @@
       "name": "Kim, Eric"
     }
   ],
-  "description": "<p>Simulation data and analysis code for the paper <em>Circuit-aware protection against burst errors in lattice surgery</em> (E. Kim). The archive contains per-event failure counts for six simulation studies of a distance-9 and distance-13 lattice-surgery CNOT under burst errors (the protection-count sweep, the original Fig. 2a, Fig. 5a and Fig. 5b,c cohorts, a realistic-decoder study and a response-model study), the stored analyses of the distance-9 mechanism studies, SHA-256 checksums, and Python code that recomputes every reported value from the per-event counts and compares it with the paper.</p><p>Reproduce with <code>pip install -r requirements.txt</code> followed by <code>./step1_verify_data.sh</code>, <code>./step2_recompute_results.sh</code> and <code>./step3_compare_with_paper.sh</code>. File formats are described in <code>data/README.md</code>.</p><p>Data are released under CC BY 4.0; code under the MIT License.</p>",
+  "description": "<p>Simulation data and analysis code for the paper <em>Circuit-aware protection against burst errors in lattice surgery</em> (E. Kim). The archive contains per-event failure counts for six simulation studies of a distance-9 and distance-13 lattice-surgery CNOT under burst errors (the protection-count sweep, the original Fig. 2a, Fig. 5a and Fig. 5b,c cohorts, a realistic-decoder study and a response-model study), the stored analyses of the distance-9 mechanism studies, SHA-256 checksums, and Python code that recomputes every reported value from the per-event counts and compares it with the paper.</p><p>Version 1.1.0 adds <code>data/calibration_extension/</code>, which is not part of the paper: a pre-registered rerun of the Fig. 2a layouts on the protection-count sweep's 600-impact bank. It varies impact energy up to the Willow-calibrated scale, standard versus echoed decoupling, and protected-site trapping and gap. The deep/typed advantage is resolved only for small impacts (eta = 1.43 [1.11, 1.90] at the paper's scale) and vanishes from ten times that energy upward.</p><p>Reproduce with <code>pip install -r requirements.txt</code> followed by <code>./step1_verify_data.sh</code>, <code>./step2_recompute_results.sh</code> and <code>./step3_compare_with_paper.sh</code>. File formats are described in <code>data/README.md</code>.</p><p>Data are released under CC BY 4.0; code under the MIT License.</p>",
   "license": "cc-by-4.0",
   "keywords": [
     "quantum error correction",
@@ -17,5 +17,5 @@
     "superconducting qubits",
     "gap engineering"
   ],
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

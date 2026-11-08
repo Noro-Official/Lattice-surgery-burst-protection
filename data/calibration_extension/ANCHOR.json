@@ -1,0 +1,44 @@
+{
+ "complete": true,
+ "typed_paper": {
+  "new": 0.0003011678059895833,
+  "new_ci": [
+   0.0002210979058566355,
+   0.0003808947320660674
+  ],
+  "count_sweep": 0.00024241129557291667,
+  "count_sweep_recomputed": 0.00024241129557291667,
+  "count_sweep_ci": [
+   0.0001740874390168796,
+   0.0003081307384772445
+  ],
+  "new_within_count_sweep_ci": true,
+  "paired_diff": 5.8756510416666647e-05,
+  "paired_diff_ci": [
+   -2.656800908842733e-05,
+   0.00014563672697232296
+  ],
+  "paired_diff_ci_contains_0": true
+ },
+ "shallow": {
+  "new": 0.0007518513997395834,
+  "new_ci": [
+   0.0004995414386298052,
+   0.0010389367964435078
+  ],
+  "count_sweep": 0.00075787353515625,
+  "count_sweep_recomputed": 0.00075787353515625,
+  "count_sweep_ci": [
+   0.0005004770463225156,
+   0.001055428748164913
+  ],
+  "new_within_count_sweep_ci": true,
+  "paired_diff": -6.0221354166665455e-06,
+  "paired_diff_ci": [
+   -9.055751827793403e-05,
+   8.007310886487307e-05
+  ],
+  "paired_diff_ci_contains_0": true
+ },
+ "ANCHOR_PASS": true
+}
