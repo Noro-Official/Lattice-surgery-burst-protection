@@ -4,6 +4,15 @@ title: "Circuit-aware protection against burst errors in lattice surgery: reprod
 authors:
   - family-names: Kim
     given-names: Eric
+doi: "10.5281/zenodo.24046121"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24046121"
+    description: "Zenodo archive, all versions"
+  - type: doi
+    value: "10.5281/zenodo.24046122"
+    description: "Zenodo archive, version 1.0.0"
+version: "1.0.0"
 repository-code: "https://github.com/Noro-Official/Lattice-surgery-burst-protection"
 license: MIT
 keywords:

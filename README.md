@@ -3,6 +3,7 @@
 [![reproduce](https://github.com/Noro-Official/Lattice-surgery-burst-protection/actions/workflows/reproduce.yml/badge.svg)](https://github.com/Noro-Official/Lattice-surgery-burst-protection/actions/workflows/reproduce.yml)
 [![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24046121.svg)](https://doi.org/10.5281/zenodo.24046121)
 
 Eric Kim
 
@@ -141,7 +142,7 @@ Step 3 prints the following table.
 
 ## Citation
 
-If you use these data or this code, please cite the paper:
+If you use these data or this code, please cite the paper and this archive:
 
 ```bibtex
 @misc{kim2026burst,
@@ -150,10 +151,21 @@ If you use these data or this code, please cite the paper:
   year   = {2026},
   note   = {Manuscript in preparation}
 }
+
+@dataset{kim2026burstdata,
+  title     = {Code and data for "Circuit-aware protection against burst errors in lattice surgery"},
+  author    = {Kim, Eric},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {1.0.0},
+  doi       = {10.5281/zenodo.24046121},
+  url       = {https://doi.org/10.5281/zenodo.24046121}
+}
 ```
 
-Citation metadata for this repository are in [`CITATION.cff`](CITATION.cff). The entry will be updated with the
-journal reference and a dataset DOI.
+The archive is on Zenodo: [10.5281/zenodo.24046121](https://doi.org/10.5281/zenodo.24046121) always resolves to the latest
+version; [10.5281/zenodo.24046122](https://doi.org/10.5281/zenodo.24046122) is version 1.0.0. Citation metadata are also
+in [`CITATION.cff`](CITATION.cff). The paper entry will be updated with its journal reference.
 
 ## License
 
