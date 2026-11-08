@@ -4,7 +4,7 @@ title: "Circuit-aware protection against burst errors in lattice surgery: reprod
 authors:
   - family-names: Kim
     given-names: Eric
-repository-code: "https://github.com/Noro-Official/lattice-surgery-burst-protection"
+repository-code: "https://github.com/Noro-Official/Lattice-surgery-burst-protection"
 license: MIT
 keywords:
   - quantum error correction

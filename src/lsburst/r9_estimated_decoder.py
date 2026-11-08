@@ -1,7 +1,10 @@
-"""Standalone copy of scripts/pacer_postv2_r3/r9/analyze_r9.py from Noro-Official/waveguide-please.
+"""Estimated-burst and other realistic decoders, d = 9, 1,200 impacts (R9).
 
-Only the input/output paths and the JSON writer differ from the original; the estimator, bootstrap and seed are
-unchanged. Usage: python analysis/r9_estimated_burst_decoder.py [output.json]
+Used for the estimated-burst decoder's break-even burst probability (paper: about 4.3% per operation).
+
+Copied from `scripts/pacer_postv2_r3/r9/analyze_r9.py` in Noro-Official/waveguide-please (commit 9848047e). The
+estimator, bootstrap and seed are unchanged; only the entry point differs (`analyze` returns the result instead of
+writing it, and the console report is omitted). The original module docstring follows.
 
 R9 analysis (pre-registered with the runner, before any outcome is sampled).
 
@@ -29,17 +32,14 @@ excludes 0, a layout difference if the dE interval excludes 0.  Oracle-only gain
 """
 from __future__ import annotations
 
-
-import json
-import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "data/r9_estimated_burst_decoder"     # inputs: events.npz, rows.parquet, quiet.parquet
-RESULT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "results/r9_RESULTS.json"
+from lsburst._io import DATA_DIR, load_json, to_jsonable
+
+STUDY_DIR = DATA_DIR / "r9_estimated_burst_decoder"     # events.npz, rows.parquet, quiet.parquet
 B = 4000
 BOOT_SEED = 20351199
 LAYOUTS = ("typed", "deep")
@@ -55,12 +55,13 @@ def ci(x):
     return [float(v) for v in np.percentile(x, [2.5, 97.5])] if len(x) else [None, None]
 
 
-def main() -> int:
-    ev = np.load(OUT / "events.npz")
+def analyze(data_dir: Path = STUDY_DIR) -> dict:
+    """Recomputes the R9 analysis from the per-event counts in `data_dir`."""
+    ev = np.load(data_dir / "events.npz")
     st, counts = ev["stratum"], ev["pool_counts"].astype(float)
     n = len(st)
-    df = pd.read_parquet(OUT / "rows.parquet")
-    q = pd.read_parquet(OUT / "quiet.parquet")
+    df = pd.read_parquet(data_dir / "rows.parquet")
+    q = pd.read_parquet(data_dir / "quiet.parquet")
     complete = len(df) == 2 * n * len(LAYOUTS) * len(VARIANTS)
     events_present = np.unique(df.event.values)
     # analysis on the events present in BOTH modes for every layout / variant (complete-case; reported)
@@ -149,31 +150,8 @@ def main() -> int:
         lambda g: pd.Series({"accept_frac": g.E_accepted.sum() / g.shots.sum(), "onset_abs_err_median": float(np.nanmedian(g.E_onset_abs_err_median)),
                              "pos_err_mm_median": float(np.nanmedian(g.E_pos_err_mm_median)), "distinct_estimates_mean": float(g.E_distinct.mean())}), include_groups=False)
     res["diagnostics"]["E_estimator_V0"] = {f"{a}|h{b}": r.to_dict() for (a, b), r in acc.iterrows()}
-    RESULT.parent.mkdir(parents=True, exist_ok=True)
-    RESULT.write_text(json.dumps(json.loads(json.dumps(res, default=lambda x: x.tolist() if isinstance(x, np.ndarray) else float(x))), indent=1))
-    # console table
-    print(f"R9 | complete {complete} | events analysed {len(use)} of {n} ({res['events_analysed_per_stratum']})")
-    for var in VARIANTS:
-        print(f"\n{var}: excess risk given a burst (worst mode) and deep - typed")
-        for d in DECS:
-            t, dp, c = res["excess"][f"{var}|{d}|typed"], res["excess"][f"{var}|{d}|deep"], res["layout_contrast"][f"{var}|{d}"]
-            print("  %-3s typed %.3e  deep %.3e  dE %+.3e [%+.2e, %+.2e]  ratio %s [%s, %s]" % (
-                d, t["E"], dp["E"], c["dE_deep_minus_typed"], *c["dE_ci95"], f"{c['ratio_deep_over_typed']:.2f}" if c["ratio_deep_over_typed"] else "-",
-                *(f"{x:.2f}" if x is not None else "-" for x in c["ratio_ci95"])))
-        for lay in LAYOUTS:
-            print(f"  {lay}: reduction vs D0 (retained fraction of oracle F gain)")
-            for d in ("F(oracle)", "Fc(oracle, corr.)") + REALISTIC:
-                r = res["reduction_vs_D0"][f"{var}|{lay}|{d}"]
-                extra = "" if d not in REALISTIC else "  g %s [%s, %s]" % (
-                    f"{r['retained_fraction_of_oracle_gain']:.2f}" if r["retained_fraction_of_oracle_gain"] is not None else "-",
-                    *(f"{x:.2f}" if x is not None else "-" for x in r["retained_ci95"]))
-                print("    %-18s R %+.3e [%+.2e, %+.2e]%s" % (d, r["R"], *r["ci95"], extra))
-    print("\nburst-free penalty (harms - rescues per shot):")
-    for kk, v in res["quiet_penalty"].items():
-        print(f"  {kk}: alarms {v['alarms']}/{v['shots']}, dq {v['dq']:+.2e} [{v['dq_ci95'][0]:+.1e}, {v['dq_ci95'][1]:+.1e}], break-even {v['break_even_burst_prob_per_op']}")
-    print("\ndiagnostics:", json.dumps(res["diagnostics"], indent=1, default=float))
-    return 0
+    return to_jsonable(res)
 
 
-if __name__ == "__main__":
-    sys.exit(main())
+def stored_results(data_dir: Path = STUDY_DIR) -> dict:
+    return load_json(data_dir / "RESULTS.json")

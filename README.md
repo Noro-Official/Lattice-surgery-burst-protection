@@ -1,107 +1,161 @@
-# Circuit-aware protection against burst errors in lattice surgery: reproducibility package
+# Code and data for "Circuit-aware protection against burst errors in lattice surgery"
 
-Data and code for checking the results in *Circuit-aware protection against burst errors in lattice surgery*
-(E. Kim). One command recomputes every result that can be traced to per-event failure counts. It then compares each
-one with the value printed in the paper.
+[![reproduce](https://github.com/Noro-Official/Lattice-surgery-burst-protection/actions/workflows/reproduce.yml/badge.svg)](https://github.com/Noro-Official/Lattice-surgery-burst-protection/actions/workflows/reproduce.yml)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
+
+Eric Kim
+
+This repository contains the simulation data and analysis code behind every number and data figure in the paper.
+It recomputes each result from per-event failure counts, checks the result against the stored analysis, and compares
+it with the value printed in the paper.
+
+### Abstract
+
+Large-scale quantum computing will require logical operations protected against high-energy impacts that disturb many
+superconducting qubits at once. Gap engineering suppresses relaxation induced by these impacts, but protecting only a
+subset of qubits requires choosing where that protection is placed. During lattice surgery, measurements change as
+patches merge and split, exposing different ancillas and temporal boundaries to burst errors. Here we compare three
+static protection layouts for a simulated lattice-surgery CNOT, matching the numbers of protected ancillas and the X:Z
+check-type splits. At distance 9, protecting the check type measured during each merge reduces burst-induced excess
+risk by 38 (+6/−5)% (95% bootstrap interval) relative to a deep geometric band under correlated background matching,
+without giving the decoder the impact parameters. We attribute this difference to report errors at temporal
+boundaries and ancilla faults propagating to data, which interact to increase the excess risk of a shallow band. We
+also find that the typed layout reaches the shallow-band reference risk with an estimated 49 (+2/−14) fewer protected
+ancillas. At distance 13, the advantage is not resolved under oracle decoding, and a five-round burst cap reverses
+the shallow-band ordering. These results indicate how the measurements of a logical circuit can guide protection
+placement within the simulated decoder and burst-duration regimes tested here.
+
+## Requirements
+
+Python 3.13 (3.11 or later should work) with:
+
+- numpy==2.5.3
+- pandas==3.0.5
+- scipy==1.18.1
+- pyarrow==26.0.1
+
+Drawing the figures (step 4) also needs the packages in [`tools/figures/requirements.txt`](tools/figures/requirements.txt).
+The workflow was tested on Linux (Debian and Ubuntu).
+
+## Reproducing the results
+
+Step 0: create an environment and install the dependencies.
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-python reproduce.py          # about 10 s; writes results/summary.md
 ```
 
-`reproduce.py` does four things:
-1. Checks the SHA-256 of every data file.
-2. Recomputes six studies from per-event counts, with the original estimators and bootstrap seeds, and requires an
-   exact match with the stored analyses.
-3. Reads the stored analyses for the distance-9 mechanism studies.
-4. Prints a paper-versus-data table.
+Step 1: verify the checksums of every data file, including the archived cohorts against their original package.
 
-It exits with an error only if a checksum or a recomputation fails. The GitHub Actions workflow runs it on every push.
+```bash
+./step1_verify_data.sh
+```
 
-## What can be checked
+Step 2: recompute every study from its per-event counts. Each result must match the stored analysis exactly
+(relative tolerance 1e-9); the script exits with an error otherwise. Results are written to `out/results/`. This
+takes about 10 seconds.
 
-| Paper result | Paper | Recomputed here | Trace level |
+```bash
+./step2_recompute_results.sh
+```
+
+Step 3: compare the recomputed results with the numbers printed in the paper. The table is printed and written to
+`out/summary.md`.
+
+```bash
+./step3_compare_with_paper.sh
+```
+
+Step 4 (optional): draw Figs. 2–5 into `out/figures/`.
+
+```bash
+pip install -r tools/figures/requirements.txt
+./step4_plot_figures.sh
+```
+
+The [`reproduce`](.github/workflows/reproduce.yml) workflow runs all four steps on every push.
+
+## Results checked against the paper
+
+Step 3 prints the following table.
+
+| Paper item | Paper | Recomputed | Trace level |
 |---|---|---|---|
 | Protected ancillas at the shallow-reference risk (Table I, Fig. 2b) | 118.8 (117.0–133.1) | 118.8 (117.0–133.1) | per-event counts |
-| Saving ΔN (abstract) | 49 (35–51) | 49 (35–51) | per-event counts |
-| Table I typed excess risk, 117–150 sites (10⁻⁴) | 8.29, 6.19, 5.10, 3.07 | same | per-event counts |
-| Estimated-burst decoder break-even burst probability | ≈ 4.3% per operation | 4.3% | per-event counts; see note 1 |
-| d = 13, three response models: typed lower under both background decoders (SM S5) | yes | yes | per-event counts |
-| d = 13, three response models: oracle comparisons (SM S5) | not resolved | Fc resolved for V1 and V10 | per-event counts; see note 2 |
-| Report × ancilla-Pauli interaction (Fig. 4b) | 1.12 (0.71–1.60) × 10⁻⁴ | same | stored analysis |
+| Protected-ancilla saving ΔN (abstract) | 49 (35–51) | 49 (35–51) | per-event counts |
+| Typed excess risk at 117, 123, 132, 150 sites (Table I, 10⁻⁴) | 8.29, 6.19, 5.10, 3.07 | same | per-event counts |
+| Deep/typed ratio η, correlated background matching, d = 9 (Fig. 2a) | 1.62 (1.49–1.77) | 1.62 (1.49–1.77) | per-event counts |
+| Typed reduction in excess risk, 1 − 1/η (abstract) | 38% (33–44%) | 38% (33–44%) | per-event counts |
+| η for FC, D0 and F (Fig. 2a) | 1.43, 1.36, 1.28 | same | per-event counts |
+| Oracle deep/typed ratios at d = 13, F and FC (Fig. 5a) | 0.96 (0.62–1.56), 1.12 (0.48–2.65) | same | per-event counts |
+| Five-round cap, shallow/typed, background matching (Fig. 5b) | 0.60 (0.28–0.97) | 0.60 (0.28–0.97) | per-event counts |
+| Estimated-burst decoder break-even burst probability | about 4.3% per operation | about 4.3% | per-event counts |
+| d = 13, three response models: typed lower under both background decoders (SM S5) | yes, all three | yes, all three | per-event counts |
+| d = 13, three response models: oracle comparisons (SM S5) | not resolved | resolved for Fc under V1 and V10 | per-event counts |
+| Report × ancilla-Pauli interaction (Fig. 4b, 10⁻⁴) | 1.12 (0.71–1.60) | 1.12 (0.71–1.60) | stored analysis |
 | Path ranking of local swaps, Spearman ρ (SM S4) | 0.77 | 0.77 | stored analysis |
-| Path cost W at depth one (Fig. 3c) | 7.8 / 10.4 / 22.7 | same | stored isolated-site scores |
-| Deep/typed ratio η at d = 9, 3,200 impacts (Fig. 2a) | 1.62 (1.49–1.77) | same | per-event counts |
-| Typed reduction, 1 − 1/η (abstract) | 38% (33–44%) | same | per-event counts |
-| η for the other decoders (Fig. 2a) | 1.43, 1.36, 1.28 | same | per-event counts |
-| d = 13 oracle ratios, 1,200 impacts (Fig. 5a) | 0.96 (0.62–1.56), 1.12 (0.48–2.65) | same | per-event counts |
-| Five-round burst cap, shallow/typed (Fig. 5b) | 0.60 (0.28–0.97) | same | per-event counts |
+| Path cost W at depth one (Fig. 3c) | 7.8 / 10.4 / 22.7 | same | stored analysis |
 
-Figs. 2a, 5a and 5b,c come from the original cohorts in the 31 October 2026 publication package (`data/p1_archive/`).
-Their 15,600 per-event block files are each checked against that package's own checksums before they are
-recomputed. All 160 archived comparisons are reproduced exactly.
+"Per-event counts" means the value is recomputed from the integer failure counts of every simulated impact.
+"Stored analysis" means the value is read from an analysis file whose per-event counts are not included.
 
-### Notes
+## Known differences and caveats
 
-1. The 4.3% break-even rests on 1 harmful and 0 rescued burst-free shots out of 131,072. The penalty's 95% interval
-   includes zero ([`data/r9_estimated_burst_decoder/README.md`](data/r9_estimated_burst_decoder/README.md)).
-2. Under the correlated oracle, the deep-minus-typed difference is resolved for two response models, while the ratio
-   intervals are unbounded ([`data/r1_d13_response_models/README.md`](data/r1_d13_response_models/README.md)).
+- **SM S5 oracle comparisons.** The paper says these comparisons are not resolved. Under the correlated oracle (Fc),
+  the deep-minus-typed difference has a 95% interval that excludes zero for response models V1 and V10. The deep/typed ratio
+  intervals are unbounded there because the Fc excess risk is close to zero. Step 3 reports this row as differing.
+- **Break-even burst probability.** The 4.3% value rests on 1 harmful and 0 rescued burst-free shots out of 131,072,
+  and the false-alarm penalty's 95% interval includes zero. The paper presents it as a point estimate.
+- **Figures 3 and 4.** Their plotted values were recovered from the manuscript's vector figures (about 0.2% of each
+  axis span) and are kept in [`assets/figure_data.json`](assets/figure_data.json). Figs. 2 and 5 are drawn from
+  recomputed results. Fig. 1 (layout masks) is not generated here.
+- **Simulator.** This repository contains simulation outputs, not the simulator. The circuit-level simulator, impact
+  model and decoders are in [Noro-Official/waveguide-please](https://github.com/Noro-Official/waveguide-please)
+  (commit `9848047e`; `scripts/pacer_postv2_campaign.py`, `scripts/pacer_postv2_r3/`). The count sweep's own run
+  scripts are in [`data/count_sweep/analysis_source/`](data/count_sweep/analysis_source/).
 
-## Contents
+## Repository layout
 
-```
-reproduce.py                       runs every check below
-requirements.txt                   versions this package was verified with
-analysis/
-  r9_estimated_burst_decoder.py    R9 analysis (standalone copy of the original)
-  r1_d13_response_models.py        R1 analysis (standalone copy of the original)
-  p1_archive_cohorts.py            Fig. 2a, 5a, 5b,c cohorts (standalone re-implementation of the original estimator)
-data/
-  count_sweep/                     refined protection-count sweep, d = 9 (Table I, Fig. 2b)
-    recompute_results.py           standalone recomputation, NumPy only
-    RUN_RESULTS.md                 design, results and provenance
-    *PROTOCOL*.json, RUNTIME_AMENDMENT.json, CONTROL_REPRODUCTION.json   pre-registration and audit trail
-    analysis_source/               original simulation and analysis code for this run (for reference)
-  r9_estimated_burst_decoder/      R9: 1,200 impacts, nine decoders
-  r1_d13_response_models/          R1: 2,000 impacts at d = 13, three response models
-  d9_mechanism_inputs/             stored analyses: factorial, local-swap exchange test, isolated-site path costs,
-                                   initial count sweep (baselines/frontier.json), composition
-  p1_archive/                      original Fig. 2a, Fig. 5a and Fig. 5b,c cohorts: per-event blocks, event banks,
-                                   quiet baselines, archived analyses and the package's checksums
-figures/                           scripts that draw Figs. 2–5 from figure_data.json and the count-sweep results
-SHA256SUMS.txt                     checksums of every file under data/
-```
+- [`step1_verify_data.sh`](step1_verify_data.sh) … [`step4_plot_figures.sh`](step4_plot_figures.sh): the
+  reproduction steps above.
+- [`data/`](data/): simulation outputs, one folder per study; formats in [`data/README.md`](data/README.md).
+    - [`data/count_sweep/`](data/count_sweep/): refined protection-count sweep (Table I, Fig. 2b).
+    - [`data/p1_archive/`](data/p1_archive/): original cohorts for Fig. 2a, Fig. 5a and Fig. 5b,c.
+    - [`data/r9_estimated_burst_decoder/`](data/r9_estimated_burst_decoder/): realistic decoders, break-even value.
+    - [`data/r1_d13_response_models/`](data/r1_d13_response_models/): three response models at d = 13 (SM S5).
+    - [`data/d9_mechanism_inputs/`](data/d9_mechanism_inputs/): stored analyses for Figs. 3c and 4b and SM S1, S4.
+- [`src/lsburst/`](src/lsburst/): Python package; one module per study, each with `analyze(data_dir) -> dict`.
+    - [`count_sweep.py`](src/lsburst/count_sweep.py), [`p1_archive.py`](src/lsburst/p1_archive.py),
+      [`r9_estimated_decoder.py`](src/lsburst/r9_estimated_decoder.py),
+      [`r1_response_models.py`](src/lsburst/r1_response_models.py): analyses.
+    - [`paper.py`](src/lsburst/paper.py): the paper's printed values and the checks against them.
+- [`tools/`](tools/): command-line scripts called by the step scripts.
+    - [`tools/figures/`](tools/figures/): figure scripts and style (`make_manuscript_figures.py`, `figs_v11.py`).
+- [`assets/figure_data.json`](assets/figure_data.json): plotted values for Figs. 3 and 4, and the starting point
+  that step 4 updates with recomputed values.
+- `out/`: ignored by git; the step scripts write their output here.
+- [`SHA256SUMS.txt`](SHA256SUMS.txt): checksums of every file under `data/`.
 
-## Data format
+## Citation
 
-Each study stores failures per simulated impact (*event*), input mode (Z or X), layout and decoder as integer counts
-out of a fixed number of shots. Burst-free blocks for the quiet baseline are stored separately. Excess risk is the
-pool-weighted stratified mean failure fraction minus the quiet baseline, taking the worse input mode. Intervals come from 4,000
-paired within-stratum event-bootstrap draws, with Dirichlet source-pool weights and Jeffreys quiet-baseline draws. Each
-analysis script documents its estimator in its header.
+If you use these data or this code, please cite the paper:
 
-## Figures
-
-```bash
-pip install -r figures/requirements.txt
-cd figures
-python make_manuscript_figures.py ../data/count_sweep/RESULTS.json   # Figs. 2-5
-python figs_v11.py               ../data/count_sweep/RESULTS.json   # final Figs. 2 and 5
+```bibtex
+@misc{kim2026burst,
+  title  = {Circuit-aware protection against burst errors in lattice surgery},
+  author = {Kim, Eric},
+  year   = {2026},
+  note   = {Manuscript in preparation}
+}
 ```
 
-Output goes to `figures/out/`. The figures use URW Nimbus Sans if you place it in `figures/fonts/`
-([urw-base35-fonts](https://github.com/ArtifexSoftware/urw-base35-fonts)); otherwise a system sans-serif is used.
+Citation metadata for this repository are in [`CITATION.cff`](CITATION.cff). The entry will be updated with the
+journal reference and a dataset DOI.
 
-## Simulation code
+## License
 
-These files are simulation outputs. The circuit-level simulator, impact model and decoders are in
-[Noro-Official/waveguide-please](https://github.com/Noro-Official/waveguide-please) at commit `9848047e`
-(`scripts/pacer_postv2_campaign.py`, `scripts/pacer_postv2_r3/`, `requirements-pacer-postv2.txt`).
-`data/count_sweep/analysis_source/` keeps the count sweep's own run and analysis scripts. They need that full
-simulation tree; `recompute_results.py` does not.
-
-## License and citation
-
-Code: MIT ([LICENSE](LICENSE)). Data: CC BY 4.0 ([LICENSE-DATA](LICENSE-DATA)). Please cite the paper; citation
-metadata are in [CITATION.cff](CITATION.cff).
+Code is released under the [MIT License](LICENSE). The data in `data/` are released under
+[CC BY 4.0](LICENSE-DATA).

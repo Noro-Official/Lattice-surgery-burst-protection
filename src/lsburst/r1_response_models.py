@@ -1,7 +1,8 @@
-"""Standalone copy of the R1 part of scripts/pacer_postv2_ms/analyze_round3.py from Noro-Official/waveguide-please.
+"""Three stochastic response models at d = 13, 2,000 impacts (R1; SM S5).
 
-Only the input/output paths and the JSON writer differ (the unrelated R6 analysis is omitted); the estimator,
-bootstrap and seed are unchanged. Usage: python analysis/r1_d13_response_models.py [output.json]
+Copied from the R1 part of `scripts/pacer_postv2_ms/analyze_round3.py` in Noro-Official/waveguide-please (commit
+9848047e). The estimator, bootstrap and seed are unchanged; the unrelated R6 analysis is omitted and `analyze`
+returns the result instead of writing it. The original module docstring follows.
 
 Round-3 analysis (written and committed before any round-3 outcome was read).
 
@@ -16,16 +17,15 @@ R1: d = 13 pilot with 5 strata (pool weights). Per (variant, decoder):
 """
 from __future__ import annotations
 
-
-import json
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 from scipy.stats import beta
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data/r1_d13_response_models"     # inputs: events.npz, rows.parquet, quiet.parquet
+from lsburst._io import DATA_DIR, load_json, to_jsonable
+
+STUDY_DIR = DATA_DIR / "r1_d13_response_models"     # events.npz, rows.parquet, quiet.parquet
 B = 4000
 QMAP = {"D0": "D0", "F": "D0", "D0c": "D0c", "Fc": "D0c"}
 
@@ -98,21 +98,12 @@ def core(df, ev, qt, seed, decs):
     return out
 
 
-def r1():
-    return core(pd.read_parquet(DATA / "rows.parquet"), np.load(DATA / "events.npz"), pd.read_parquet(DATA / "quiet.parquet"),
-                20301209, ("D0", "D0c", "F", "Fc"))
+def analyze(data_dir: Path = STUDY_DIR) -> dict:
+    """Recomputes the R1 analysis from the per-event counts in `data_dir`. Returns {"R1": [row per model x decoder]}."""
+    rows = core(pd.read_parquet(data_dir / "rows.parquet"), np.load(data_dir / "events.npz"),
+                pd.read_parquet(data_dir / "quiet.parquet"), 20301209, ("D0", "D0c", "F", "Fc"))
+    return to_jsonable({"R1": rows})
 
 
-def main() -> int:
-    import sys
-    out = {"R1": r1()}
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "results/r1_RESULTS.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(json.loads(json.dumps(out, default=lambda x: x.tolist() if isinstance(x, np.ndarray) else float(x))), indent=1))
-    for r in out["R1"]:
-        print(f"{r['variant']:<26} {r['decoder']:<4} rho {r['rho']:.2f} [{r['rho_ci'][0]:.2f}, {r['rho_ci'][1]:.2f}]  {r['verdict']}")
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+def stored_results(data_dir: Path = STUDY_DIR) -> dict:
+    return {"R1": load_json(data_dir / "RESULTS.json")["R1"]}

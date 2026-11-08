@@ -43,7 +43,10 @@ from highlight_text import ax_text                                    # noqa: E4
 
 
 W = 518.4 / 72
-D = json.load(open(os.path.join(HERE, "figure_data.json")))
+# Plotted values: out/figure_data.json from tools/build_figure_inputs.py (override with FIGURE_DATA).
+REPO = os.path.dirname(os.path.dirname(HERE))
+FIGURE_DATA = os.environ.get("FIGURE_DATA", os.path.join(REPO, "out", "figure_data.json"))
+D = json.load(open(FIGURE_DATA))
 GHOST = "#a3a3a3"
 
 # Decoder rows: (group header, row label, primary?)  -- order matches figure_data
@@ -287,7 +290,7 @@ def cvd_preview(png, out_png):
 
 
 if __name__ == "__main__":
-    out = os.path.join(HERE, "out")
+    out = os.environ.get("FIGURE_OUT_DIR", os.path.join(REPO, "out", "figures"))
     os.makedirs(out, exist_ok=True)
     jobs = (("fig02_placement_resources", lambda: fig2(sys.argv[1])),
             ("fig05_decoder_duration", fig5))

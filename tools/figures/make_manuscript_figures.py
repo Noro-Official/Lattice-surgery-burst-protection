@@ -30,7 +30,10 @@ from pacer_style import (ax_in, letter, errpt, null_line, direction_cue,  # noqa
 from highlight_text import ax_text                         # noqa: E402
 
 W = 518.4 / 72                         # match the manuscript's figure width (7.2 in)
-D = json.load(open(os.path.join(HERE, "figure_data.json")))
+# Plotted values: out/figure_data.json from tools/build_figure_inputs.py (override with FIGURE_DATA).
+REPO = os.path.dirname(os.path.dirname(HERE))
+FIGURE_DATA = os.environ.get("FIGURE_DATA", os.path.join(REPO, "out", "figure_data.json"))
+D = json.load(open(FIGURE_DATA))
 
 DECODERS = ["Background matching", "Background + correlations",
             "Event-informed oracle", "Oracle + correlations"]
@@ -307,7 +310,7 @@ def fig5():
 
 
 if __name__ == "__main__":
-    out = os.path.join(HERE, "out")
+    out = os.environ.get("FIGURE_OUT_DIR", os.path.join(REPO, "out", "figures"))
     os.makedirs(out, exist_ok=True)
     jobs = (("fig02_placement_resources", lambda: fig2(sys.argv[1])),
             ("fig03_boundary_paths", fig3),

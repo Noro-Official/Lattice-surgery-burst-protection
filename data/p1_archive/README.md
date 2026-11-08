@@ -2,7 +2,7 @@
 
 These files are copied byte for byte from `publication_package_20261031_revised/experiments/pacer_p1/results/`, the
 archive the manuscript's figures were built from. `PACKAGE_SHA256SUMS.txt` holds that package's own checksum
-entries for these cohorts, and `reproduce.py` checks every file here against it.
+entries for these cohorts, and `step1_verify_data.sh` checks every file here against it.
 
 | Folder / file | Paper use | Design |
 |---|---|---|
@@ -17,9 +17,9 @@ analysis is stored only in `precision_analysis.json`.
 
 **Per-event counts.** `<cohort>/blocks.jsonl.gz` contains the cohort's block files (4,800 for `precision_d9`,
 3,600 for `precision_d13`, 7,200 for `regime`), one line per file: `{"file", "sha256", "content"}`. `content` is the
-original file's text, byte for byte. `analysis/p1_archive_cohorts.py` checks each line's SHA-256 against
+original file's text, byte for byte. `src/lsburst/p1_archive.py` checks each line's SHA-256 against
 `PACKAGE_SHA256SUMS.txt` and the number of blocks against the package. It then recomputes the analyses with the original
-estimator and seeds. `reproduce.py` requires an exact match with the archived `analysis.json` and
+estimator and seeds. `step2_recompute_results.sh` requires an exact match with the archived `analysis.json` and
 `precision_analysis.json` (160 comparisons).
 
 Each block row holds, per event, input mode and condition, a four-bin histogram per decoder over 4,096 (precision) or

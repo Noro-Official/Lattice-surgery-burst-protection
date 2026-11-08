@@ -1,5 +1,5 @@
+out/
 results/
-figures/out/
-figures/fonts/
+tools/figures/fonts/
 __pycache__/
 *.pyc

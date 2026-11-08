@@ -8,7 +8,7 @@ four decoders.
 | `events.npz` | Event bank: 2,000 impacts in five strata, source-pool counts, impact positions and onsets |
 | `rows.parquet` | Failure counts per event × input mode × layout × response model (V0_baseline, V1_phase_unsuppressed, V10_phase_echo_measured), 1,024 shots per cell, for D0, D0c, F, Fc |
 | `quiet.parquet` | Burst-free blocks (4,096 per mode, 1,024 shots each) |
-| `RESULTS.json` | Stored analysis (key `R1`). `python analysis/r1_d13_response_models.py` recomputes it exactly. |
+| `RESULTS.json` | Stored analysis (key `R1`). `src/lsburst/r1_response_models.py` recomputes it exactly (step 2). |
 | `FILES.sha256` | Checksums from the original release |
 
 The verdict for each response model and decoder uses the deep-minus-typed excess-risk difference ΔE. It is "superior" when the 95% interval of ΔE lies above zero.

@@ -15,32 +15,21 @@ jobs:
           python-version: "3.13"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Recompute results and compare with the paper
-        run: python reproduce.py
+      - name: "Step 1: verify data checksums"
+        run: ./step1_verify_data.sh
+      - name: "Step 2: recompute results from per-event counts"
+        run: ./step2_recompute_results.sh
+      - name: "Step 3: compare with the paper"
+        run: ./step3_compare_with_paper.sh
       - name: Job summary
         if: always()
-        run: test -f results/summary.md && cat results/summary.md >> "$GITHUB_STEP_SUMMARY" || true
+        run: test -f out/summary.md && cat out/summary.md >> "$GITHUB_STEP_SUMMARY" || true
+      - name: "Step 4: draw figures"
+        run: |
+          pip install -r tools/figures/requirements.txt
+          ./step4_plot_figures.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: reproduced-results
-          path: results/
-
-  figures:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-          cache: pip
-      - run: pip install -r figures/requirements.txt
-      - name: Draw Figs. 2-5
-        working-directory: figures
-        run: |
-          python make_manuscript_figures.py ../data/count_sweep/RESULTS.json
-          python figs_v11.py ../data/count_sweep/RESULTS.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: figures
-          path: figures/out/
+          name: out
+          path: out/
